@@ -1,0 +1,39 @@
+# Claude working memory (temporary, not part of permanent docs)
+project-brain/context/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.vite/
+*.local
+
+# Python / backend / ML
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Datasets & model artifacts (never commit — see project-brain/03_ML_BACKEND.md)
+data/
+datasets/
+coco/
+ml/data/
+ml/datasets/
+*.pt
+*.pth
+*.onnx
+*.h5
+*.weights
+
+# Env / secrets
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
