@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary":"#0a0054","on-secondary-fixed":"#001a42","secondary-fixed":"#d8e2ff","surface-container":"#eeeeeb","tertiary-fixed":"#e2dfff","secondary-container":"#2170e4","primary-fixed":"#d8e3fb","background":"#f9f9f6","tertiary-container":"#18008f","on-primary-fixed-variant":"#3c475a","on-primary":"#ffffff","surface-bright":"#f9f9f6","secondary-fixed-dim":"#adc6ff","surface-dim":"#dadad7","on-secondary":"#ffffff","inverse-primary":"#bcc7de","surface-container-highest":"#e2e3e0","on-secondary-fixed-variant":"#004395","surface-tint":"#545f73","primary":"#091426","on-secondary-container":"#fefcff","on-tertiary-fixed":"#0f0069","outline":"#75777d","primary-container":"#1e293b","on-primary-fixed":"#111c2d","surface-container-low":"#f4f4f1","outline-variant":"#c5c6cd","on-background":"#1a1c1b","secondary":"#0058be","on-primary-container":"#8590a6","on-surface-variant":"#45474c","inverse-surface":"#2f312f","error-container":"#ffdad6","surface-variant":"#e2e3e0","on-tertiary-fixed-variant":"#3323cc","surface-container-lowest":"#ffffff","on-tertiary":"#ffffff","error":"#ba1a1a","inverse-on-surface":"#f1f1ee","on-error-container":"#93000a","surface-container-high":"#e8e8e5","tertiary-fixed-dim":"#c3c0ff","surface":"#f9f9f6","on-tertiary-container":"#8481ff","on-surface":"#1a1c1b","on-error":"#ffffff","primary-fixed-dim":"#bcc7de"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","margin":"2.5rem","space-sm":"0.5rem","space-lg":"1.5rem","margin-mobile":"1.25rem","space-xl":"2.5rem","space-xs":"0.25rem","gutter":"1.5rem","gutter-mobile":"1rem"},"fontFamily":{"headline-sm":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"code-sm":["Inter"],"headline-md":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"label-md":["Inter"],"headline-xl":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-lg":["Inter"],"label-sm":["Inter"],"label-lg":["Inter"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Inter"]},"fontSize":{"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.015em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="VisionAI Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VzN29Am0SnSfU3uC7ZfHbVprmjCfgUYeNTiXrBMPkdFV5HY9iZr-qyjUqQ1wgTOLghhN2Af89HUpcY45lVAKtyokVNKwlFOn485tu8GYTiZJs681p0Ct7nOoIVrMsqHF2exBkvWvrux_DN4zG9YfoDdzASXUIXjJJWAvKNwaGa-oyxz68L8r7pr6pVmL3rDTHhccBqmo5ptoDB6TKdKcqrUjskqCCpaCoCLR2SgvCAFS_soRYh7MDmk0AY"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">VisionAI</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant self-start">Capstone / ML v2.4</span></div></div><nav class="hidden xl:flex items-center gap-space-xs ml-space-md" data-active-classes="bg-primary-container text-on-primary font-label-lg rounded-lg shadow-sm"><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analyze" href="#">Analyze</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="results" href="#">Results</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="history" href="#">History</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="models-and-metrics" href="#">Models &amp; Metrics</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-code-sm text-code-sm text-on-surface-variant">API: Mock Ready</span></div><div class="hidden lg:flex items-center px-space-sm py-space-xs rounded-full bg-surface-container-highest"><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">YOLO11s + ResNet50</span></div><a class="inline-flex items-center justify-center px-space-md py-space-xs rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-all shadow-[0_2px_8px_-2px_rgba(30,41,59,0.08)] active:scale-95" data-path="analyze" href="#">Analyze Image</a><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_1px_4px_rgba(0,0,0,0.08)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl_Pr_ejcZmB7DvG2H7qtDe8bXMq__Ui4FVhpxfOnhe8pLthPUjlayIQ-zgWeCd58TaQzd1cj7ci2FoOsJzN--Lc-nrDZbWU4lNQOuZyvTOkNBej7T0ygq9ehNDvMtEy9owt-kOBgCXue0uLdnU1e-EUntpidW-_IejZE-iLKvj7ZNSoz5WIbNuTHtVnynzGFXgnyFc2DIzMM6QtrfOHaWgULAb2rZUSscV0VmHMII22nhjjQn9kzXIA"/></div></div></div></header><main class="w-full pt-20 bg-surface flex-grow"><div class="flex flex-col w-full">
+<!-- Title & Operational Header -->
+<section class="w-full px-margin pt-space-xl pb-space-lg bg-surface">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="space-y-space-xs">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+          EVALUATION_REPORT // RUN_ID: #ML-2024-CAPSTONE-V2.4
+        </div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Models &amp; Evaluation</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          Performance information, benchmark metrics, and training evaluation for the dual-stream computer vision pipeline.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+          Export Evaluation PDF
+        </button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+          Re-Run Test Suite
+        </button>
+</div>
+</div>
+</section>
+<!-- System Pipeline Architecture Status Banner -->
+<section class="w-full px-margin pb-space-xl bg-surface">
+<div class="max-w-7xl mx-auto">
+<div class="rounded-xl bg-primary-container text-on-primary p-space-lg shadow-md relative overflow-hidden">
+<div class="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-secondary/15 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg relative z-10">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">deployed_code</span>
+              Production Pipeline Status
+            </div>
+<div class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-primary">
+              Dual-Stream Inference Engine Architecture
+            </div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="bg-primary/40 rounded-lg p-space-sm backdrop-blur-sm space-y-1">
+<span class="font-label-sm text-label-sm text-on-primary-container block">Backend Service</span>
+<div class="font-label-md text-label-md text-on-primary flex items-center gap-1.5 font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+                FastAPI v0.110 (Service Ready)
+              </div>
+</div>
+<div class="bg-primary/40 rounded-lg p-space-sm backdrop-blur-sm space-y-1">
+<span class="font-label-sm text-label-sm text-on-primary-container block">Detection Node</span>
+<div class="font-label-md text-label-md text-on-primary flex items-center gap-1.5 font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+                YOLO11s (80 Classes) — Ready
+              </div>
+</div>
+<div class="bg-primary/40 rounded-lg p-space-sm backdrop-blur-sm space-y-1">
+<span class="font-label-sm text-label-sm text-on-primary-container block">Classification Node</span>
+<div class="font-label-md text-label-md text-on-primary flex items-center gap-1.5 font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+                ResNet50 (PyTorch) — Ready
+              </div>
+</div>
+<div class="bg-primary/40 rounded-lg p-space-sm backdrop-blur-sm space-y-1">
+<span class="font-label-sm text-label-sm text-on-primary-container block">Acceleration Platform</span>
+<div class="font-label-md text-label-md text-on-primary flex items-center gap-1.5 font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+                CUDA / TensorRT (Mock bench)
+              </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Two Primary Model Spec Cards -->
+<section class="w-full px-margin pb-space-xl bg-surface">
+<div class="max-w-7xl mx-auto space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Model Specifications</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Active Neural Topologies</h2>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-low px-space-sm py-1 rounded">Validation Dataset: COCO-Val2017 (5,000 imgs)</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- YOLO11s Spec Card -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="space-y-space-md">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold">DETECTION STREAM</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">yolo11s.pt</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">YOLO11s (Object Detection)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time multi-scale object spatial localization &amp; boundary regression.</p>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low text-secondary">
+<span class="material-symbols-outlined text-[28px]">filter_center_focus</span>
+</div>
+</div>
+<!-- Architectural Specs Grid -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Backbone Topology</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">CSPDarknet w/ C3k2 &amp; C2PSA</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Input Tensor Dim</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">640 × 640 × 3 px</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Runtime Framework</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Ultralytics YOLOv11 / PyTorch</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Target Taxonomy</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">80 COCO Common Classes</span>
+</div>
+</div>
+<!-- Core Numeric Metrics -->
+<div class="pt-space-sm space-y-space-sm">
+<div class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+<span>Validation Benchmarks</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">IoU Threshold: 0.50:0.95</span>
+</div>
+<div class="grid grid-cols-5 gap-space-xs text-center">
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-primary">52.8%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">mAP@50</div>
+</div>
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-primary">38.4%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">mAP50-95</div>
+</div>
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-primary">88.6%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Precision</div>
+</div>
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-primary">82.1%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Recall</div>
+</div>
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-secondary font-bold">12.4ms</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">FP16 Latency</div>
+</div>
+</div>
+<!-- Confidence Visualizer -->
+<div class="space-y-1.5 pt-2">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Mean Intersection Over Union (mIoU) Score</span>
+<span class="text-on-surface font-semibold">0.742 / 1.0</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 74.2%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-secondary">verified</span> Anchor-Free Spatial Head</span>
+<span class="font-code-sm text-code-sm">Weights: 9.4M Params (38.8 MB)</span>
+</div>
+</div>
+<!-- ResNet50 Spec Card -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="space-y-space-md">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold">CLASSIFICATION STREAM</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">resnet50_v2.onnx</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">ResNet50 (Classification)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Deep residual semantic latent feature extractor &amp; classification branch.</p>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-[28px]">hub</span>
+</div>
+</div>
+<!-- Architectural Specs Grid -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Backbone Topology</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Deep Residual Network (50 layers)</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Input Tensor Dim</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">224 × 224 × 3 px</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Runtime Framework</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">PyTorch Torchvision / TensorRT</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Pretrained Lineage</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">ImageNet-1k &amp; COCO Fine-Tuned</span>
+</div>
+</div>
+<!-- Core Numeric Metrics -->
+<div class="pt-space-sm space-y-space-sm">
+<div class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+<span>Classification Performance</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Softmax Probability Threshold: 0.50</span>
+</div>
+<div class="grid grid-cols-5 gap-space-xs text-center">
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-primary">76.8%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Top-1 Acc</div>
+</div>
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-primary">93.4%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Top-5 Acc</div>
+</div>
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-primary">81.2%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Macro F1</div>
+</div>
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-primary">84.5%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Weighted F1</div>
+</div>
+<div class="p-2 rounded bg-surface-container">
+<div class="font-headline-sm text-headline-sm text-secondary font-bold">79.1%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Balanced Acc</div>
+</div>
+</div>
+<!-- Confidence Visualizer -->
+<div class="space-y-1.5 pt-2">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Feature Embed Vector Dimension (Penultimate Pool)</span>
+<span class="text-on-surface font-semibold">2,048 Float32</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 88.5%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">verified</span> Bottleneck Residual Blocks</span>
+<span class="font-code-sm text-code-sm">Weights: 25.6M Params (98.2 MB)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Training & Validation Performance Charts Section -->
+<section class="w-full px-margin pb-space-xl bg-surface">
+<div class="max-w-7xl mx-auto space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Convergence History</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Training &amp; Validation Dynamics</h2>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-1 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant">Batch Size: 32</span>
+<span class="px-space-sm py-1 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant">Optimizer: AdamW (η = 1e-3)</span>
+<span class="px-space-sm py-1 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant">Epochs: 50</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Detection Training Curves (YOLO11s) -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">YOLO11s Detection</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-1">Loss Descents &amp; mAP@50 Ascent</h3>
+</div>
+<div class="flex items-center gap-3 font-code-sm text-code-sm text-on-surface-variant">
+<span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-error inline-block"></span> Box Loss (0.082)</span>
+<span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-on-tertiary-container inline-block"></span> Class Loss (0.041)</span>
+<span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-secondary inline-block"></span> mAP50 (0.528)</span>
+</div>
+</div>
+<!-- Clean Native SVG Chart: Multi-metric Curve -->
+<div class="w-full bg-surface-container-low rounded-lg p-space-md">
+<svg aria-label="YOLO11s Training Performance Curve" class="w-full h-48 overflow-visible" viewbox="0 0 540 220">
+<defs>
+<lineargradient id="mapGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0058be" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#0058be" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Subtle Grid lines -->
+<line stroke="#dadad7" stroke-dasharray="3 3" stroke-width="1" x1="30" x2="520" y1="20" y2="20"></line>
+<line stroke="#dadad7" stroke-dasharray="3 3" stroke-width="1" x1="30" x2="520" y1="65" y2="65"></line>
+<line stroke="#dadad7" stroke-dasharray="3 3" stroke-width="1" x1="30" x2="520" y1="110" y2="110"></line>
+<line stroke="#dadad7" stroke-dasharray="3 3" stroke-width="1" x1="30" x2="520" y1="155" y2="155"></line>
+<line stroke="#dadad7" stroke-width="1.5" x1="30" x2="520" y1="190" y2="190"></line>
+<!-- Axis Labels -->
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="24">0.60</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="69">0.45</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="114">0.30</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="159">0.15</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="193">0.00</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="35" y="206">Ep 1</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="155" y="206">Ep 12</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="275" y="206">Ep 25</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="395" y="206">Ep 38</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="500" y="206">Ep 50</text>
+<!-- Area Fill for mAP50 -->
+<path d="M 35 178 C 80 160, 130 110, 200 80 C 270 58, 360 48, 515 42 L 515 190 L 35 190 Z" fill="url(#mapGradient)"></path>
+<!-- Box Loss: Curve decreasing from 0.52 to 0.082 -->
+<path d="M 35 48 C 80 82, 140 125, 220 148 C 300 162, 420 168, 515 170" fill="none" stroke="#ba1a1a" stroke-linecap="round" stroke-width="2.2"></path>
+<!-- Class Loss: Curve decreasing from 0.40 to 0.041 -->
+<path d="M 35 84 C 95 120, 170 155, 270 168 C 360 174, 440 178, 515 180" fill="none" stroke="#8481ff" stroke-linecap="round" stroke-width="2"></path>
+<!-- mAP50 Curve: Increasing up to 0.528 -->
+<path d="M 35 178 C 80 160, 130 110, 200 80 C 270 58, 360 48, 515 42" fill="none" stroke="#0058be" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Terminal Dots -->
+<circle cx="515" cy="170" fill="#ba1a1a" r="3.5"></circle>
+<circle cx="515" cy="180" fill="#8481ff" r="3.5"></circle>
+<circle cx="515" cy="42" fill="#0058be" r="4.5" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="grid grid-cols-3 gap-space-xs text-center font-label-sm text-label-sm">
+<div class="p-2 rounded bg-surface-container-low">
+<span class="text-on-surface-variant block">Box Loss</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-error">0.082</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">(-84.2% total)</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low">
+<span class="text-on-surface-variant block">Class Loss</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-tertiary-container">0.041</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">(-89.7% total)</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low">
+<span class="text-on-surface-variant block">Peak mAP@50</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-secondary">0.528</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">(+0.395 delta)</span>
+</div>
+</div>
+</div>
+<!-- Classification Training Curves (ResNet50) -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold">ResNet50 Classification</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-1">Accuracy vs Cross-Entropy Loss</h3>
+</div>
+<div class="flex items-center gap-3 font-code-sm text-code-sm text-on-surface-variant">
+<span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-primary inline-block"></span> Train Acc (82.4%)</span>
+<span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-secondary inline-block"></span> Val Acc (76.8%)</span>
+<span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-outline inline-block"></span> Val Loss (0.54)</span>
+</div>
+</div>
+<!-- Clean Native SVG Chart: ResNet Accuracy Convergence -->
+<div class="w-full bg-surface-container-low rounded-lg p-space-md">
+<svg aria-label="ResNet50 Convergence Curves" class="w-full h-48 overflow-visible" viewbox="0 0 540 220">
+<!-- Subtle Grid lines -->
+<line stroke="#dadad7" stroke-dasharray="3 3" stroke-width="1" x1="30" x2="520" y1="20" y2="20"></line>
+<line stroke="#dadad7" stroke-dasharray="3 3" stroke-width="1" x1="30" x2="520" y1="65" y2="65"></line>
+<line stroke="#dadad7" stroke-dasharray="3 3" stroke-width="1" x1="30" x2="520" y1="110" y2="110"></line>
+<line stroke="#dadad7" stroke-dasharray="3 3" stroke-width="1" x1="30" x2="520" y1="155" y2="155"></line>
+<line stroke="#dadad7" stroke-width="1.5" x1="30" x2="520" y1="190" y2="190"></line>
+<!-- Axis Labels -->
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="24">100%</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="69">75%</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="114">50%</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="159">25%</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" text-anchor="end" x="22" y="193">0%</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="35" y="206">Ep 1</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="155" y="206">Ep 12</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="275" y="206">Ep 25</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="395" y="206">Ep 38</text>
+<text class="font-code-sm fill-current text-on-surface-variant" font-size="9" x="500" y="206">Ep 50</text>
+<!-- Validation Loss Curve (Scaled down inverted) -->
+<path d="M 35 35 C 80 90, 150 145, 230 160 C 320 172, 420 176, 515 178" fill="none" stroke="#75777d" stroke-dasharray="4 3" stroke-width="1.8"></path>
+<!-- Train Accuracy (0.32 -> 0.824) -->
+<path d="M 35 145 C 90 110, 150 78, 230 60 C 330 46, 420 40, 515 36" fill="none" stroke="#091426" stroke-linecap="round" stroke-width="2.2"></path>
+<!-- Validation Accuracy (0.28 -> 0.768) -->
+<path d="M 35 152 C 90 120, 150 88, 230 74 C 330 62, 420 56, 515 52" fill="none" stroke="#0058be" stroke-linecap="round" stroke-width="2.2"></path>
+<!-- Highlight points at Epoch 50 -->
+<circle cx="515" cy="36" fill="#091426" r="4"></circle>
+<circle cx="515" cy="52" fill="#0058be" r="4" stroke="#ffffff" stroke-width="1.5"></circle>
+<circle cx="515" cy="178" fill="#75777d" r="3.5"></circle>
+</svg>
+</div>
+<div class="grid grid-cols-3 gap-space-xs text-center font-label-sm text-label-sm">
+<div class="p-2 rounded bg-surface-container-low">
+<span class="text-on-surface-variant block">Training Accuracy</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">82.4%</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">(Converged @ Ep 44)</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low">
+<span class="text-on-surface-variant block">Validation Accuracy</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-secondary">76.8%</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">(Generalization Gap: 5.6%)</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low">
+<span class="text-on-surface-variant block">Final Val Cross-Entropy</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">0.542</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">(Minima Stable)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Confusion Matrix Preview -->
+<section class="w-full px-margin pb-space-xl bg-surface">
+<div class="max-w-7xl mx-auto rounded-xl bg-surface-container-lowest p-space-lg shadow-sm space-y-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary">grid_view</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Classification Disambiguation</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Normalized Confusion Matrix (Top-10 Dominant COCO Classes)</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cross-correlation of Ground Truth vs Predicted Top-1 categories on 1,500 held-out test frames.</p>
+</div>
+<!-- Controls: Class selector dropdown & Zoom toggle controls -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="relative">
+<select class="bg-surface-container-low text-on-surface font-label-md text-label-md px-space-md py-1.5 pr-8 rounded-lg appearance-none cursor-pointer outline-none hover:bg-surface-container-high transition-colors" id="classFilterSelect">
+<option value="all">All Top-10 Classes</option>
+<option value="person">Class: Person Focus</option>
+<option value="car">Class: Car Focus</option>
+<option value="dog">Class: Dog Focus</option>
+<option value="bicycle">Class: Bicycle Focus</option>
+</select>
+<span class="material-symbols-outlined text-[18px] absolute right-2.5 top-2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<div class="inline-flex rounded-lg bg-surface-container-low p-0.5">
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container-high transition-colors" id="zoomOutBtn" title="Zoom Out">
+<span class="material-symbols-outlined text-[18px]">zoom_out</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container-high transition-colors" id="zoomInBtn" title="Zoom In">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span>
+</button>
+</div>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors" id="resetMatrixBtn">
+            Reset View
+          </button>
+</div>
+</div>
+<!-- Matrix Container -->
+<div class="overflow-x-auto w-full transition-all duration-300" id="matrixContainer">
+<div class="min-w-[760px] p-space-sm bg-surface-container-low rounded-lg flex flex-col items-center">
+<!-- Top X-Axis Label -->
+<div class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface-variant mb-space-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span> Predicted Class (Output Probability Vector)
+          </div>
+<div class="flex items-center w-full">
+<!-- Left Y-Axis Label -->
+<div class="[writing-mode:vertical-rl] rotate-180 font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface-variant mr-space-xs text-center flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span> Ground Truth (Annotated Class)
+            </div>
+<!-- Grid Layout -->
+<div class="flex-grow">
+<!-- Grid Header -->
+<div class="grid grid-cols-11 gap-1 text-center font-code-sm text-code-sm mb-1 text-on-surface-variant">
+<div class="p-1"></div>
+<div class="p-1 font-semibold truncate">Person</div>
+<div class="p-1 font-semibold truncate">Car</div>
+<div class="p-1 font-semibold truncate">Dog</div>
+<div class="p-1 font-semibold truncate">Bicycle</div>
+<div class="p-1 font-semibold truncate">Chair</div>
+<div class="p-1 font-semibold truncate">Laptop</div>
+<div class="p-1 font-semibold truncate">Bottle</div>
+<div class="p-1 font-semibold truncate">Backpack</div>
+<div class="p-1 font-semibold truncate">T-Light</div>
+<div class="p-1 font-semibold truncate">Bus</div>
+</div>
+<!-- Matrix Rows -->
+<!-- Row 1: Person -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="person">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Person</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm" title="Person -&gt; Person: 0.94">0.94</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.01">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.00">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.02">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.01">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.00">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.00">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.02">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.00">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant" title="0.00">0.00</div>
+</div>
+<!-- Row 2: Car -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="car">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Car</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.93</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-secondary/30 text-on-surface font-medium">0.04</div>
+</div>
+<!-- Row 3: Dog -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="dog">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Dog</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.95</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+</div>
+<!-- Row 4: Bicycle -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="bicycle">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Bicycle</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.04</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.89</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.03</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+</div>
+<!-- Row 5: Chair -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="chair">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Chair</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.03</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.85</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.04</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+</div>
+<!-- Row 6: Laptop -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="laptop">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Laptop</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.02</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.91</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.03</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+</div>
+<!-- Row 7: Bottle -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="bottle">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Bottle</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.86</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.06</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.03</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+</div>
+<!-- Row 8: Backpack -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="backpack">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Backpack</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.04</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.03</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.02</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.03</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.84</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+</div>
+<!-- Row 9: Traffic Light -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="traffic-light">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Traffic Lt</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.03</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.93</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+</div>
+<!-- Row 10: Bus -->
+<div class="grid grid-cols-11 gap-1 items-center text-center font-code-sm text-code-sm mb-1 matrix-row" data-class="bus">
+<div class="font-semibold text-left truncate text-on-surface pr-1">Bus</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-secondary/35 text-on-surface font-semibold">0.06</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.00</div>
+<div class="p-2 rounded bg-surface-container text-on-surface-variant">0.01</div>
+<div class="p-2 rounded bg-secondary text-on-secondary font-bold shadow-sm">0.92</div>
+</div>
+</div>
+</div>
+<!-- Heatmap Legend -->
+<div class="flex items-center gap-space-md mt-space-md text-on-surface-variant font-label-sm text-label-sm">
+<span>Normalized Heatmap Scale:</span>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="w-5 h-4 rounded bg-surface-container inline-block"></span>
+<span>&lt;0.05 (Rare Error)</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="w-5 h-4 rounded bg-secondary/30 inline-block"></span>
+<span>0.05-0.10 (Ambiguity)</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="w-5 h-4 rounded bg-secondary inline-block"></span>
+<span>&gt;0.80 (Accurate Top-1)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Per-Class Detailed Performance Table -->
+<section class="w-full px-margin pb-space-xl bg-surface">
+<div class="max-w-7xl mx-auto rounded-xl bg-surface-container-lowest p-space-lg shadow-sm space-y-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Fine-Grained Classification Manifest</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Per-Class Statistical Breakdown</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Granular test set validation metrics per object category across detection thresholds.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative w-64">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant absolute left-3 top-2.5">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm placeholder:text-on-surface-variant/70 focus:outline-none focus:ring-1 focus:ring-secondary transition-all" id="classSearchInput" placeholder="Filter class names..." type="text"/>
+</div>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" id="clearSearchBtn">
+            Clear
+          </button>
+</div>
+</div>
+<!-- Table Element -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm" id="metricsTable">
+<thead>
+<tr class="bg-surface-container text-on-surface font-label-md text-label-md">
+<th class="py-space-sm px-space-md rounded-l-lg">Class Name</th>
+<th class="py-space-sm px-space-md">Precision</th>
+<th class="py-space-sm px-space-md">Recall</th>
+<th class="py-space-sm px-space-md">F1-Score</th>
+<th class="py-space-sm px-space-md">Support (Test Instances)</th>
+<th class="py-space-sm px-space-md rounded-r-lg">Performance Rating</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-code-sm text-code-sm">
+<!-- Row: Person -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                Person
+              </td>
+<td class="py-space-sm px-space-md">94.2%</td>
+<td class="py-space-sm px-space-md">91.8%</td>
+<td class="py-space-sm px-space-md font-semibold text-primary">93.0%</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">1,248 instances</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Exemplary
+                </span>
+</td>
+</tr>
+<!-- Row: Car -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                Car
+              </td>
+<td class="py-space-sm px-space-md">92.8%</td>
+<td class="py-space-sm px-space-md">90.4%</td>
+<td class="py-space-sm px-space-md font-semibold text-primary">91.6%</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">856 instances</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Exemplary
+                </span>
+</td>
+</tr>
+<!-- Row: Dog -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                Dog
+              </td>
+<td class="py-space-sm px-space-md">95.1%</td>
+<td class="py-space-sm px-space-md">93.6%</td>
+<td class="py-space-sm px-space-md font-semibold text-primary">94.3%</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">412 instances</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Exemplary
+                </span>
+</td>
+</tr>
+<!-- Row: Bicycle -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-tint"></span>
+                Bicycle
+              </td>
+<td class="py-space-sm px-space-md">89.4%</td>
+<td class="py-space-sm px-space-md">86.2%</td>
+<td class="py-space-sm px-space-md font-semibold text-primary">87.8%</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">329 instances</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-tint"></span> High Fidelity
+                </span>
+</td>
+</tr>
+<!-- Row: Laptop -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                Laptop
+              </td>
+<td class="py-space-sm px-space-md">91.0%</td>
+<td class="py-space-sm px-space-md">88.5%</td>
+<td class="py-space-sm px-space-md font-semibold text-primary">89.7%</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">275 instances</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Exemplary
+                </span>
+</td>
+</tr>
+<!-- Row: Chair -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-tint"></span>
+                Chair
+              </td>
+<td class="py-space-sm px-space-md">84.6%</td>
+<td class="py-space-sm px-space-md">79.2%</td>
+<td class="py-space-sm px-space-md font-semibold text-primary">81.8%</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">518 instances</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-tint"></span> Acceptable
+                </span>
+</td>
+</tr>
+<!-- Row: Bottle -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-tint"></span>
+                Bottle
+              </td>
+<td class="py-space-sm px-space-md">86.2%</td>
+<td class="py-space-sm px-space-md">83.1%</td>
+<td class="py-space-sm px-space-md font-semibold text-primary">84.6%</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">364 instances</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-tint"></span> High Fidelity
+                </span>
+</td>
+</tr>
+<!-- Row: Backpack -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-sm px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-tint"></span>
+                Backpack
+              </td>
+<td class="py-space-sm px-space-md">83.9%</td>
+<td class="py-space-sm px-space-md">81.0%</td>
+<td class="py-space-sm px-space-md font-semibold text-primary">82.4%</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">211 instances</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-tint"></span> Acceptable
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Explicit Note Mandate -->
+<div class="mt-space-md p-space-md rounded-lg bg-surface-container-low flex items-start gap-space-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px] text-secondary shrink-0 mt-0.5">info</span>
+<div class="space-y-0.5">
+<p class="font-label-md text-label-md font-medium text-on-surface">Capstone Governance Verification Note</p>
+<p class="font-body-sm text-body-sm">
+            Mock evaluation metrics shown for capstone presentation purposes. Ready for dynamic FastAPI metrics binding via the <code class="font-code-sm text-code-sm bg-surface-container-highest px-1 py-0.5 rounded">/api/v1/metrics/eval</code> endpoint.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Client Behavior Script -->
+<script>
+    (function() {
+      // 1. Searchable Per-Class Table Filter
+      const searchInput = document.getElementById('classSearchInput');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+      const metricsTable = document.getElementById('metricsTable');
+
+      if (searchInput && metricsTable) {
+        searchInput.addEventListener('input', function(e) {
+          const query = e.target.value.toLowerCase().trim();
+          const rows = metricsTable.querySelectorAll('tbody tr');
+          rows.forEach(row => {
+            const className = row.cells[0].textContent.toLowerCase();
+            if (className.includes(query)) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
+
+        if (clearSearchBtn) {
+          clearSearchBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            const rows = metricsTable.querySelectorAll('tbody tr');
+            rows.forEach(row => row.style.display = '');
+            searchInput.focus();
+          });
+        }
+      }
+
+      // 2. Confusion Matrix Class Filter
+      const classFilterSelect = document.getElementById('classFilterSelect');
+      const matrixRows = document.querySelectorAll('.matrix-row');
+
+      if (classFilterSelect) {
+        classFilterSelect.addEventListener('change', function(e) {
+          const selected = e.target.value;
+          matrixRows.forEach(row => {
+            if (selected === 'all') {
+              row.style.opacity = '1';
+              row.classList.remove('ring-2', 'ring-secondary');
+            } else {
+              const rowClass = row.getAttribute('data-class');
+              if (rowClass === selected) {
+                row.style.opacity = '1';
+                row.classList.add('ring-2', 'ring-secondary');
+              } else {
+                row.style.opacity = '0.25';
+                row.classList.remove('ring-2', 'ring-secondary');
+              }
+            }
+          });
+        });
+      }
+
+      // 3. Zoom Toggle Controls for Confusion Matrix
+      const matrixContainer = document.getElementById('matrixContainer');
+      const zoomInBtn = document.getElementById('zoomInBtn');
+      const zoomOutBtn = document.getElementById('zoomOutBtn');
+      const resetMatrixBtn = document.getElementById('resetMatrixBtn');
+      let currentScale = 1;
+
+      if (zoomInBtn && zoomOutBtn && matrixContainer) {
+        zoomInBtn.addEventListener('click', function() {
+          if (currentScale < 1.3) {
+            currentScale += 0.1;
+            matrixContainer.firstElementChild.style.transform = `scale(${currentScale})`;
+            matrixContainer.firstElementChild.style.transformOrigin = 'top left';
+          }
+        });
+
+        zoomOutBtn.addEventListener('click', function() {
+          if (currentScale > 0.8) {
+            currentScale -= 0.1;
+            matrixContainer.firstElementChild.style.transform = `scale(${currentScale})`;
+            matrixContainer.firstElementChild.style.transformOrigin = 'top left';
+          }
+        });
+
+        if (resetMatrixBtn) {
+          resetMatrixBtn.addEventListener('click', function() {
+            currentScale = 1;
+            matrixContainer.firstElementChild.style.transform = 'scale(1)';
+            if (classFilterSelect) {
+              classFilterSelect.value = 'all';
+              matrixRows.forEach(row => {
+                row.style.opacity = '1';
+                row.classList.remove('ring-2', 'ring-secondary');
+              });
+            }
+          });
+        }
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-auto"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl mb-space-xl"><div class="space-y-space-sm md:col-span-1"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary">VisionAI</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant">v2.4</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Architected for dual-stream neural inference combining YOLO11s 80-class object detection bounds and ResNet-50 feature classification topologies.</p></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">Dataset &amp; Pipeline</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li>COCO 2017 (80 Object Classes)</li><li>ImageNet-1K Pretrained Weights</li><li>Confidence Threshold: τ ≥ 0.45</li><li>NMS IOU Overlap: 0.50</li></ul></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">Architecture Stack</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li>FastAPI Asynchronous Inference Engine</li><li>React Vite Client Shell</li><li>ONNX Runtime Acceleration</li><li>TensorFlow / PyTorch Dual Backing</li></ul></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">Capstone Governance</h4><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p>Machine Perception Specialization</p><p>Internship Evaluation Panel / Review 2024</p><div class="pt-space-xs flex flex-col gap-1"><a class="hover:text-secondary transition-colors inline-block" href="#">API Swagger Docs ↗</a><a class="hover:text-secondary transition-colors inline-block" href="#">Model Weights &amp; Benchmark Report ↗</a></div></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><p>© 2024 VisionAI Capstone Project. All benchmark metrics validated under standard COCO mAP[0.50:0.95].</p><div class="flex gap-space-md"><a class="hover:text-on-surface transition-colors" href="#">Architecture Schema</a><a class="hover:text-on-surface transition-colors" href="#">Inference Logs</a><a class="hover:text-on-surface transition-colors" href="#">Model Cards</a></div></div></div></footer></body></html>

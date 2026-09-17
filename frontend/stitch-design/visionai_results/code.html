@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary":"#0a0054","on-secondary-fixed":"#001a42","secondary-fixed":"#d8e2ff","surface-container":"#eeeeeb","tertiary-fixed":"#e2dfff","secondary-container":"#2170e4","primary-fixed":"#d8e3fb","background":"#f9f9f6","tertiary-container":"#18008f","on-primary-fixed-variant":"#3c475a","on-primary":"#ffffff","surface-bright":"#f9f9f6","secondary-fixed-dim":"#adc6ff","surface-dim":"#dadad7","on-secondary":"#ffffff","inverse-primary":"#bcc7de","surface-container-highest":"#e2e3e0","on-secondary-fixed-variant":"#004395","surface-tint":"#545f73","primary":"#091426","on-secondary-container":"#fefcff","on-tertiary-fixed":"#0f0069","outline":"#75777d","primary-container":"#1e293b","on-primary-fixed":"#111c2d","surface-container-low":"#f4f4f1","outline-variant":"#c5c6cd","on-background":"#1a1c1b","secondary":"#0058be","on-primary-container":"#8590a6","on-surface-variant":"#45474c","inverse-surface":"#2f312f","error-container":"#ffdad6","surface-variant":"#e2e3e0","on-tertiary-fixed-variant":"#3323cc","surface-container-lowest":"#ffffff","on-tertiary":"#ffffff","error":"#ba1a1a","inverse-on-surface":"#f1f1ee","on-error-container":"#93000a","surface-container-high":"#e8e8e5","tertiary-fixed-dim":"#c3c0ff","surface":"#f9f9f6","on-tertiary-container":"#8481ff","on-surface":"#1a1c1b","on-error":"#ffffff","primary-fixed-dim":"#bcc7de"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","margin":"2.5rem","space-sm":"0.5rem","space-lg":"1.5rem","margin-mobile":"1.25rem","space-xl":"2.5rem","space-xs":"0.25rem","gutter":"1.5rem","gutter-mobile":"1rem"},"fontFamily":{"headline-sm":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"code-sm":["Inter"],"headline-md":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"label-md":["Inter"],"headline-xl":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-lg":["Inter"],"label-sm":["Inter"],"label-lg":["Inter"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Inter"]},"fontSize":{"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.015em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="VisionAI Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VzN29Am0SnSfU3uC7ZfHbVprmjCfgUYeNTiXrBMPkdFV5HY9iZr-qyjUqQ1wgTOLghhN2Af89HUpcY45lVAKtyokVNKwlFOn485tu8GYTiZJs681p0Ct7nOoIVrMsqHF2exBkvWvrux_DN4zG9YfoDdzASXUIXjJJWAvKNwaGa-oyxz68L8r7pr6pVmL3rDTHhccBqmo5ptoDB6TKdKcqrUjskqCCpaCoCLR2SgvCAFS_soRYh7MDmk0AY"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">VisionAI</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant self-start">Capstone / ML v2.4</span></div></div><nav class="hidden xl:flex items-center gap-space-xs ml-space-md" data-active-classes="bg-primary-container text-on-primary font-label-lg rounded-lg shadow-sm"><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="analyze" href="#">Analyze</a><a aria-current="page" class="px-space-md py-space-xs transition-colors bg-primary-container text-on-primary font-label-lg rounded-lg shadow-sm" data-path="results" href="#">Results</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="history" href="#">History</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="models-and-metrics" href="#">Models &amp; Metrics</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-code-sm text-code-sm text-on-surface-variant">API: Mock Ready</span></div><div class="hidden lg:flex items-center px-space-sm py-space-xs rounded-full bg-surface-container-highest"><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">YOLO11s + ResNet50</span></div><a class="inline-flex items-center justify-center px-space-md py-space-xs rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-all shadow-[0_2px_8px_-2px_rgba(30,41,59,0.08)] active:scale-95" data-path="analyze" href="#">Analyze Image</a><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_1px_4px_rgba(0,0,0,0.08)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl_Pr_ejcZmB7DvG2H7qtDe8bXMq__Ui4FVhpxfOnhe8pLthPUjlayIQ-zgWeCd58TaQzd1cj7ci2FoOsJzN--Lc-nrDZbWU4lNQOuZyvTOkNBej7T0ygq9ehNDvMtEy9owt-kOBgCXue0uLdnU1e-EUntpidW-_IejZE-iLKvj7ZNSoz5WIbNuTHtVnynzGFXgnyFc2DIzMM6QtrfOHaWgULAb2rZUSscV0VmHMII22nhjjQn9kzXIA"/></div></div></div></header><main class="w-full pt-20 bg-surface flex-grow"><div class="flex flex-col w-full">
+<!-- Page Header & Analytical Breadcrumbs Bar -->
+<section class="w-full px-margin-mobile md:px-margin pt-space-lg pb-space-md">
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<span class="font-code-sm text-code-sm text-secondary font-semibold">VisionAI Inference</span>
+<span>/</span>
+<span>Dual-Stream Pipeline</span>
+<span>/</span>
+<span class="text-primary font-medium">Results Manifest</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Analysis Results</h1>
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-space-xs pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">image</span>
+<span class="font-code-sm text-code-sm font-semibold text-primary">street-scene-ny.jpg</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span>
+<span>Oct 24, 2024 • 10:42 AM</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">bolt</span>
+<span class="font-medium text-secondary">0.82s processing time</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high font-code-sm text-code-sm text-on-surface-variant">
+            YOLO11s + ResNet50 (COCO 2017)
+          </div>
+</div>
+</div>
+<!-- Quick Actions Header -->
+<div class="flex items-center gap-space-xs self-start xl:self-auto">
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container-high transition-all shadow-sm font-label-lg text-label-lg active:scale-95" id="btn-re-run">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span>Re-run Inference</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all shadow-sm font-label-lg text-label-lg active:scale-95" id="btn-export-quick">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Package</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Summary Metric Strip -->
+<section class="w-full px-margin-mobile md:px-margin py-space-sm">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Metric 1: Objects Detected -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Objects Detected</span>
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold">+2 vs avg</span>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">7</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">discrete instances</span>
+</div>
+<div class="mt-space-xs flex items-center gap-1 text-on-surface-variant font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>4 COCO semantic classes</span>
+</div>
+</div>
+<!-- Metric 2: Mean Detection Confidence -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Mean Confidence</span>
+<span class="material-symbols-outlined text-[20px] text-secondary">verified</span>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">92.4%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">p ≥ 0.85</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden mt-space-xs">
+<div class="bg-secondary h-full rounded-full" style="width: 92.4%"></div>
+</div>
+</div>
+<!-- Metric 3: Processing Time -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Inference Latency</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">FastAPI</span>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">0.82<span class="text-headline-md font-medium text-on-surface-variant">s</span></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">end-to-end</span>
+</div>
+<div class="mt-space-xs flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm">
+<span>Tensor: 640×640</span>
+<span>NPU: Ready</span>
+</div>
+</div>
+<!-- Metric 4: Primary Scene Class -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Scene Classification</span>
+<span class="material-symbols-outlined text-[20px] text-primary">location_city</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-sm text-headline-sm text-primary truncate" title="Pedestrian / City Street">Urban Pedestrian</div>
+<div class="text-secondary font-label-lg text-label-lg font-semibold mt-0.5">97.1% ResNet50</div>
+</div>
+<div class="mt-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+          Dominant topology: Manhattan Grid
+        </div>
+</div>
+</div>
+</section>
+<!-- Main Analytical Workspace: Split View -->
+<section class="w-full px-margin-mobile md:px-margin py-space-md">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: Interactive Detection Canvas (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Interactive Canvas Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Canvas Top Control Toolbar -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm">
+<!-- View Mode Switcher -->
+<div class="flex items-center p-0.5 rounded-lg bg-surface-container">
+<button class="px-space-sm py-1 rounded-md text-label-sm font-label-sm font-medium bg-surface-container-lowest text-primary shadow-xs transition-all" id="view-mode-annotated">Annotated</button>
+<button class="px-space-sm py-1 rounded-md text-label-sm font-label-sm font-medium text-on-surface-variant hover:text-primary transition-all" id="view-mode-original">Original</button>
+<button class="px-space-sm py-1 rounded-md text-label-sm font-label-sm font-medium text-on-surface-variant hover:text-primary transition-all" id="view-mode-split">Split View</button>
+</div>
+<!-- Overlays Toggle Switches -->
+<div class="flex flex-wrap items-center gap-space-md">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" id="toggle-boxes" type="checkbox"/>
+<span class="w-7 h-4 bg-surface-container-highest peer-checked:bg-primary rounded-full relative inline-block transition-colors duration-200 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-transform peer-checked:after:translate-x-3"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Bounding Boxes</span>
+</label>
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" id="toggle-labels" type="checkbox"/>
+<span class="w-7 h-4 bg-surface-container-highest peer-checked:bg-primary rounded-full relative inline-block transition-colors duration-200 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-transform peer-checked:after:translate-x-3"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Labels</span>
+</label>
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" id="toggle-confidence" type="checkbox"/>
+<span class="w-7 h-4 bg-surface-container-highest peer-checked:bg-primary rounded-full relative inline-block transition-colors duration-200 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-transform peer-checked:after:translate-x-3"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Confidence</span>
+</label>
+</div>
+<!-- Scale / Reset tools -->
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors" title="Fit to Screen">
+<span class="material-symbols-outlined text-[18px]">fit_screen</span>
+</button>
+<button class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors" title="Full Resolution Zoom">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span>
+</button>
+</div>
+</div>
+<!-- Image Stage Container with Vector Bounding Overlays -->
+<div class="relative w-full bg-surface-container-high overflow-hidden select-none" id="viewport-stage" style="aspect-ratio: 16/9;">
+<!-- Base Raster Image -->
+<img alt="Street scene analysis canvas" class="w-full h-full object-cover block" id="inference-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1juRPSPKM2B0TGMOja-f_JoXIGFtOBXwOX4SDGDq3WQhPYI5w6urbBH5pQ8qCgTqPH8e2LOx6hnZpkI7xUwI6QUW68q7m2FsYn34kXlDfNoi7AQZAsyRWBStH5q67hU2QsBpo9LfTTQAUU3hfTROcf2sWR1JHs5O-uF6i4FyeXr-fZEWb6bTFtukiFodjm-Dz5nW8JI7ZGtYayP6ryZ-NRED_1qeK5OJ7nit0rBXm7IHyYuSFJMlq2Q"/>
+<!-- Split Divider Overlay (Hidden by default, used in split mode) -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none hidden" id="split-mask" style="width: 50%;">
+<img alt="Clean source backdrop" class="absolute inset-0 w-full h-full object-cover max-w-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1juRPSPKM2B0TGMOja-f_JoXIGFtOBXwOX4SDGDq3WQhPYI5w6urbBH5pQ8qCgTqPH8e2LOx6hnZpkI7xUwI6QUW68q7m2FsYn34kXlDfNoi7AQZAsyRWBStH5q67hU2QsBpo9LfTTQAUU3hfTROcf2sWR1JHs5O-uF6i4FyeXr-fZEWb6bTFtukiFodjm-Dz5nW8JI7ZGtYayP6ryZ-NRED_1qeK5OJ7nit0rBXm7IHyYuSFJMlq2Q" style="width: 200%;"/>
+</div>
+<!-- Dynamic SVG Bounding Box Layer -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-200" id="svg-bounding-layer" preserveaspectratio="none" viewbox="0 0 1000 562.5">
+<!-- Defs for filter drop glows -->
+<defs>
+<filter height="120%" id="halo-glow" width="120%" x="-10%" y="-10%">
+<fedropshadow dx="0" dy="1" flood-color="#000000" flood-opacity="0.3" stddeviation="1.5"></fedropshadow>
+</filter>
+</defs>
+<!-- Box 1: Person 1 (Foreground Left Pedestrian) -->
+<g class="detection-box-group pointer-events-auto cursor-pointer" data-id="1" id="box-person-1">
+<rect fill="rgba(33, 112, 228, 0.12)" filter="url(#halo-glow)" height="210" rx="3" stroke="#2170e4" stroke-width="2.5" width="60" x="2" y="300"></rect>
+<g class="annotation-tag">
+<rect fill="#2170e4" height="20" rx="3" width="88" x="2" y="278"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0.02em" x="7" y="292">
+<tspan class="tag-label">person</tspan> <tspan class="tag-conf" fill="#d8e3fb">96.2%</tspan>
+</text>
+</g>
+</g>
+<!-- Box 2: Yellow Taxi (Mid-ground Right) -->
+<g class="detection-box-group pointer-events-auto cursor-pointer" data-id="2" id="box-taxi">
+<rect fill="rgba(16, 185, 129, 0.12)" filter="url(#halo-glow)" height="130" rx="3" stroke="#10b981" stroke-width="2.5" width="232" x="765" y="318"></rect>
+<g class="annotation-tag">
+<rect fill="#10b981" height="20" rx="3" width="108" x="765" y="296"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0.02em" x="770" y="310">
+<tspan class="tag-label">yellow taxi</tspan> <tspan class="tag-conf" fill="#ecfdf5">94.7%</tspan>
+</text>
+</g>
+</g>
+<!-- Box 3: Bicyclist (Center Street Lane) -->
+<g class="detection-box-group pointer-events-auto cursor-pointer" data-id="3" id="box-bicyclist">
+<rect fill="rgba(245, 158, 11, 0.12)" filter="url(#halo-glow)" height="205" rx="3" stroke="#f59e0b" stroke-width="2.5" width="76" x="562" y="295"></rect>
+<g class="annotation-tag">
+<rect fill="#f59e0b" height="20" rx="3" width="94" x="562" y="273"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0.02em" x="567" y="287">
+<tspan class="tag-label">bicycle</tspan> <tspan class="tag-conf" fill="#fffbeb">91.3%</tspan>
+</text>
+</g>
+</g>
+<!-- Box 4: Person 2 (Female Crosswalk Pedestrian) -->
+<g class="detection-box-group pointer-events-auto cursor-pointer" data-id="4" id="box-person-2">
+<rect fill="rgba(33, 112, 228, 0.12)" filter="url(#halo-glow)" height="185" rx="3" stroke="#2170e4" stroke-width="2.5" width="64" x="62" y="330"></rect>
+<g class="annotation-tag">
+<rect fill="#2170e4" height="20" rx="3" width="88" x="62" y="308"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0.02em" x="67" y="322">
+<tspan class="tag-label">person</tspan> <tspan class="tag-conf" fill="#d8e3fb">89.4%</tspan>
+</text>
+</g>
+</g>
+<!-- Box 5: Backpack (On Cyclist) -->
+<g class="detection-box-group pointer-events-auto cursor-pointer" data-id="5" id="box-backpack">
+<rect fill="rgba(147, 51, 234, 0.15)" filter="url(#halo-glow)" height="60" rx="3" stroke="#9333ea" stroke-dasharray="3,2" stroke-width="2" width="48" x="590" y="325"></rect>
+<g class="annotation-tag">
+<rect fill="#9333ea" height="20" rx="3" width="98" x="590" y="303"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0.02em" x="595" y="317">
+<tspan class="tag-label">backpack</tspan> <tspan class="tag-conf" fill="#f3e8ff">88.5%</tspan>
+</text>
+</g>
+</g>
+<!-- Box 6: Person 3 (Approaching Center Pedestrian) -->
+<g class="detection-box-group pointer-events-auto cursor-pointer" data-id="6" id="box-person-3">
+<rect fill="rgba(33, 112, 228, 0.12)" filter="url(#halo-glow)" height="142" rx="3" stroke="#2170e4" stroke-width="2.5" width="55" x="230" y="325"></rect>
+<g class="annotation-tag">
+<rect fill="#2170e4" height="20" rx="3" width="88" x="230" y="303"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0.02em" x="235" y="317">
+<tspan class="tag-label">person</tspan> <tspan class="tag-conf" fill="#d8e3fb">87.1%</tspan>
+</text>
+</g>
+</g>
+<!-- Box 7: Distant Yellow Taxi -->
+<g class="detection-box-group pointer-events-auto cursor-pointer" data-id="7" id="box-taxi-2">
+<rect fill="rgba(16, 185, 129, 0.12)" filter="url(#halo-glow)" height="35" rx="2" stroke="#10b981" stroke-width="2" width="48" x="461" y="310"></rect>
+<g class="annotation-tag">
+<rect fill="#10b981" height="17" rx="2" width="75" x="461" y="291"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="10" font-weight="600" x="465" y="303">
+<tspan class="tag-label">car</tspan> <tspan class="tag-conf" fill="#ecfdf5">84.2%</tspan>
+</text>
+</g>
+</g>
+</svg>
+<!-- Coordinate HUD Overlay -->
+<div class="absolute bottom-space-xs right-space-xs px-space-xs py-0.5 rounded bg-primary/80 backdrop-blur-md text-on-primary font-code-sm text-code-sm pointer-events-none">
+              Res: 1920×1080 • NMS: 0.50 • IoU Overlap Validated
+            </div>
+</div>
+<!-- Bottom Stage Action Bar -->
+<div class="px-space-md py-space-sm bg-surface-container-lowest flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg text-label-lg transition-colors" id="btn-download-img">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+<span>Download Annotated Image (PNG)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg text-label-lg transition-colors" id="btn-download-json">
+<span class="material-symbols-outlined text-[18px]">data_object</span>
+<span>Download Results JSON</span>
+</button>
+</div>
+<a class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-all shadow-sm active:scale-95" data-path="analyze" href="#">
+<span class="material-symbols-outlined text-[18px]">add_photo_alternate</span>
+<span>Analyze Another Image</span>
+</a>
+</div>
+</div>
+<!-- Detected Classes Legend Chips -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Semantic Filters:</span>
+<div class="flex flex-wrap gap-1.5">
+<button class="filter-chip active px-2.5 py-1 rounded-md text-label-sm font-label-sm font-medium bg-primary text-on-primary transition-all">All (7)</button>
+<button class="filter-chip px-2.5 py-1 rounded-md text-label-sm font-label-sm font-medium bg-surface-container-high text-on-surface hover:bg-secondary-fixed transition-all flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span>Person (3)</span>
+</button>
+<button class="filter-chip px-2.5 py-1 rounded-md text-label-sm font-label-sm font-medium bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>Vehicle (2)</span>
+</button>
+<button class="filter-chip px-2.5 py-1 rounded-md text-label-sm font-label-sm font-medium bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span>Bicycle (1)</span>
+</button>
+<button class="filter-chip px-2.5 py-1 rounded-md text-label-sm font-label-sm font-medium bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-purple-500"></span>
+<span>Accessory (1)</span>
+</button>
+</div>
+</div>
+<div class="text-on-surface-variant font-code-sm text-code-sm">Threshold τ ≥ 0.45</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: ResNet & YOLO Analytical Inspector (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- AI Inference Summary Monograph -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-semibold">AI Synthesis</h3>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-medium">Confidence: High</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<strong class="text-primary font-semibold">7 objects</strong> were detected across <strong class="text-primary font-semibold">4 distinct COCO categories</strong>. The highest confidence detection was <span class="px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-primary font-semibold">Person at 96.2%</span>. The overall context conforms to an active <strong class="text-primary font-semibold">Urban Thoroughfare</strong> with mixed pedestrian and transport flows.
+          </p>
+<div class="pt-space-xs flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">memory</span>
+<span>YOLO11s (3.1M params)</span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">model_training</span>
+<span>ResNet-50</span>
+</div>
+</div>
+</div>
+<!-- ResNet50 Top Classification Predictions -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-semibold">Top Predictions</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">ResNet-50 Deep Feature Hierarchy</p>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">equalizer</span>
+</div>
+<!-- Probability Distribution Stack -->
+<div class="space-y-space-sm pt-space-xs">
+<!-- Rank 1: Pedestrian / Urban -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="font-medium text-primary flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Person / Pedestrian
+                </span>
+<span class="font-code-sm text-code-sm font-semibold text-secondary">97.1%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all duration-500" style="width: 97.1%"></div>
+</div>
+</div>
+<!-- Rank 2: Street / Urban -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="font-normal text-on-surface-variant">Street / Urban</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">1.8%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-on-surface-variant/40" style="width: 1.8%"></div>
+</div>
+</div>
+<!-- Rank 3: Vehicle / Car -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="font-normal text-on-surface-variant">Vehicle / Car</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">0.6%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-on-surface-variant/30" style="width: 0.6%"></div>
+</div>
+</div>
+<!-- Rank 4: Outdoor / City -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="font-normal text-on-surface-variant">Outdoor / City</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">0.3%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-on-surface-variant/20" style="width: 0.3%"></div>
+</div>
+</div>
+<!-- Rank 5: Bicycle -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="font-normal text-on-surface-variant">Bicycle</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">0.2%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-on-surface-variant/20" style="width: 0.2%"></div>
+</div>
+</div>
+</div>
+<!-- Micro Spec Footer -->
+<div class="pt-space-xs mt-space-xs border-t-0 bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm">
+<span>Softmax Top-1 Entropy</span>
+<span class="font-medium text-primary">0.142 bits (Sharp)</span>
+</div>
+</div>
+<!-- Hardware & Tensor Execution Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Hardware Telemetry</h4>
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Batch / FP Precision</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">1 × 3 × 640² (FP16)</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Memory Allocation</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">248.4 MB VRAM</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Backbone Layers</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">CSPDarknet + C3k2</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Runtime Kernel</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">ONNX CUDA 12.2</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Comprehensive Detection Manifest Table -->
+<section class="w-full px-margin-mobile md:px-margin py-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Table Header Bar -->
+<div class="p-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-semibold">Detected Objects Manifest</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Correlated dual-model class assignment and bounding box localization metrics</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hover row to spotlight bounding box</span>
+</div>
+</div>
+<!-- Table Content Container -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-4 font-semibold w-12">#</th>
+<th class="py-3 px-4 font-semibold">Object Label</th>
+<th class="py-3 px-4 font-semibold">Detection Confidence (YOLO11s)</th>
+<th class="py-3 px-4 font-semibold">Classification (ResNet50)</th>
+<th class="py-3 px-4 font-semibold">Class Confidence</th>
+<th class="py-3 px-4 font-semibold text-right">Coordinate Vector</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm divide-y-0 text-on-surface">
+<!-- Row 1 -->
+<tr class="manifest-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" data-box-id="box-person-1">
+<td class="py-3.5 px-4 font-code-sm text-code-sm text-on-surface-variant">01</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded bg-[#2170e4]"></span>
+<span class="font-semibold text-primary">Person (Foreground Pedestrian)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 96.2%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">96.2%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface">Pedestrian / Walking Urbanite</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-code-sm text-code-sm font-medium">97.1%</span>
+</td>
+<td class="py-3.5 px-4 text-right font-code-sm text-code-sm text-on-surface-variant">[0.002, 0.533, 0.062, 0.906]</td>
+</tr>
+<!-- Row 2 -->
+<tr class="manifest-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" data-box-id="box-taxi">
+<td class="py-3.5 px-4 font-code-sm text-code-sm text-on-surface-variant">02</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded bg-[#10b981]"></span>
+<span class="font-semibold text-primary">Car (Yellow Cab)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-full rounded-full" style="width: 94.7%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">94.7%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface">Vehicle / Taxi Transportation</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 font-code-sm text-code-sm font-medium">95.4%</span>
+</td>
+<td class="py-3.5 px-4 text-right font-code-sm text-code-sm text-on-surface-variant">[0.765, 0.565, 0.997, 0.796]</td>
+</tr>
+<!-- Row 3 -->
+<tr class="manifest-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" data-box-id="box-bicyclist">
+<td class="py-3.5 px-4 font-code-sm text-code-sm text-on-surface-variant">03</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded bg-[#f59e0b]"></span>
+<span class="font-semibold text-primary">Bicycle (Commuter Cyclist)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full rounded-full" style="width: 91.3%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">91.3%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface">Bicycle / Micro-mobility</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-code-sm text-code-sm font-medium">92.0%</span>
+</td>
+<td class="py-3.5 px-4 text-right font-code-sm text-code-sm text-on-surface-variant">[0.562, 0.524, 0.638, 0.888]</td>
+</tr>
+<!-- Row 4 -->
+<tr class="manifest-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" data-box-id="box-person-2">
+<td class="py-3.5 px-4 font-code-sm text-code-sm text-on-surface-variant">04</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded bg-[#2170e4]"></span>
+<span class="font-semibold text-primary">Person (Crosswalk Pedestrian)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 89.4%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">89.4%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface">Pedestrian / Commuter</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-code-sm text-code-sm font-medium">90.8%</span>
+</td>
+<td class="py-3.5 px-4 text-right font-code-sm text-code-sm text-on-surface-variant">[0.062, 0.586, 0.126, 0.915]</td>
+</tr>
+<!-- Row 5 -->
+<tr class="manifest-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" data-box-id="box-backpack">
+<td class="py-3.5 px-4 font-code-sm text-code-sm text-on-surface-variant">05</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded bg-[#9333ea]"></span>
+<span class="font-semibold text-primary">Backpack (Attached Accessory)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-purple-600 h-full rounded-full" style="width: 88.5%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">88.5%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface">Accessory / Carrier Luggage</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-900 font-code-sm text-code-sm font-medium">87.2%</span>
+</td>
+<td class="py-3.5 px-4 text-right font-code-sm text-code-sm text-on-surface-variant">[0.590, 0.577, 0.638, 0.684]</td>
+</tr>
+<!-- Row 6 -->
+<tr class="manifest-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" data-box-id="box-person-3">
+<td class="py-3.5 px-4 font-code-sm text-code-sm text-on-surface-variant">06</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded bg-[#2170e4]"></span>
+<span class="font-semibold text-primary">Person (Mid-street Walker)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 87.1%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">87.1%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface">Pedestrian / Street Crossing</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-code-sm text-code-sm font-medium">86.5%</span>
+</td>
+<td class="py-3.5 px-4 text-right font-code-sm text-code-sm text-on-surface-variant">[0.230, 0.577, 0.285, 0.830]</td>
+</tr>
+<!-- Row 7 -->
+<tr class="manifest-row hover:bg-surface-container-high/40 transition-colors cursor-pointer group" data-box-id="box-taxi-2">
+<td class="py-3.5 px-4 font-code-sm text-code-sm text-on-surface-variant">07</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded bg-[#10b981]"></span>
+<span class="font-semibold text-primary">Car (Mid-ground Traffic Cab)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-600 h-full rounded-full" style="width: 84.2%"></div>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">84.2%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface">Vehicle / Urban Transit</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 font-code-sm text-code-sm font-medium">82.9%</span>
+</td>
+<td class="py-3.5 px-4 text-right font-code-sm text-code-sm text-on-surface-variant">[0.461, 0.551, 0.509, 0.613]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Global Action Footer Strip -->
+<section class="w-full px-margin-mobile md:px-margin pt-space-sm pb-space-xl">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Inference Checksum Verified</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dual-stream tensors mapped to evaluation seed #74209-A. Ready for capstone evaluation reporting.</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg text-label-lg transition-colors" id="btn-save-history">
+<span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+<span>Save to History</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg text-label-lg transition-colors" id="btn-export-pdf">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Export Full Report (PDF)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-all shadow-sm active:scale-95" id="btn-raw-tensor">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Inspect Raw Geo/Tensor</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Inline UI Interaction Script -->
+<script>
+  (function() {
+    const svgLayer = document.getElementById('svg-bounding-layer');
+    const toggleBoxes = document.getElementById('toggle-boxes');
+    const toggleLabels = document.getElementById('toggle-labels');
+    const toggleConfidence = document.getElementById('toggle-confidence');
+    const splitMask = document.getElementById('split-mask');
+
+    const viewAnnotated = document.getElementById('view-mode-annotated');
+    const viewOriginal = document.getElementById('view-mode-original');
+    const viewSplit = document.getElementById('view-mode-split');
+
+    // Toggle Bounding Boxes visibility
+    if (toggleBoxes && svgLayer) {
+      toggleBoxes.addEventListener('change', (e) => {
+        svgLayer.style.opacity = e.target.checked ? '1' : '0';
+      });
+    }
+
+    // Toggle Labels
+    if (toggleLabels) {
+      toggleLabels.addEventListener('change', (e) => {
+        const labels = document.querySelectorAll('.tag-label');
+        labels.forEach(el => {
+          el.style.display = e.target.checked ? 'inline' : 'none';
+        });
+      });
+    }
+
+    // Toggle Confidence
+    if (toggleConfidence) {
+      toggleConfidence.addEventListener('change', (e) => {
+        const confs = document.querySelectorAll('.tag-conf');
+        confs.forEach(el => {
+          el.style.display = e.target.checked ? 'inline' : 'none';
+        });
+      });
+    }
+
+    // View Modes
+    function setActiveModeBtn(activeBtn) {
+      [viewAnnotated, viewOriginal, viewSplit].forEach(btn => {
+        if (!btn) return;
+        btn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        btn.classList.add('text-on-surface-variant');
+      });
+      activeBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+      activeBtn.classList.remove('text-on-surface-variant');
+    }
+
+    if (viewAnnotated) {
+      viewAnnotated.addEventListener('click', () => {
+        setActiveModeBtn(viewAnnotated);
+        if (svgLayer) svgLayer.style.opacity = '1';
+        if (splitMask) splitMask.classList.add('hidden');
+      });
+    }
+
+    if (viewOriginal) {
+      viewOriginal.addEventListener('click', () => {
+        setActiveModeBtn(viewOriginal);
+        if (svgLayer) svgLayer.style.opacity = '0';
+        if (splitMask) splitMask.classList.add('hidden');
+      });
+    }
+
+    if (viewSplit) {
+      viewSplit.addEventListener('click', () => {
+        setActiveModeBtn(viewSplit);
+        if (svgLayer) svgLayer.style.opacity = '1';
+        if (splitMask) splitMask.classList.remove('hidden');
+      });
+    }
+
+    // Highlight bounding boxes on table row hover
+    const rows = document.querySelectorAll('.manifest-row');
+    rows.forEach(row => {
+      const targetBoxId = row.getAttribute('data-box-id');
+      const boxElement = document.getElementById(targetBoxId);
+
+      if (boxElement) {
+        row.addEventListener('mouseenter', () => {
+          const rect = boxElement.querySelector('rect');
+          if (rect) {
+            rect.setAttribute('stroke-width', '4');
+            rect.style.filter = 'drop-shadow(0 0 8px rgba(33, 112, 228, 0.8))';
+          }
+        });
+
+        row.addEventListener('mouseleave', () => {
+          const rect = boxElement.querySelector('rect');
+          if (rect) {
+            rect.setAttribute('stroke-width', '2.5');
+            rect.style.filter = 'url(#halo-glow)';
+          }
+        });
+      }
+    });
+
+    // Inverse: click bounding box to highlight row
+    const boxes = document.querySelectorAll('.detection-box-group');
+    boxes.forEach(box => {
+      box.addEventListener('click', () => {
+        const boxId = box.id;
+        const matchingRow = document.querySelector(`.manifest-row[data-box-id="${boxId}"]`);
+        if (matchingRow) {
+          matchingRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          matchingRow.classList.add('bg-secondary-fixed/50');
+          setTimeout(() => {
+            matchingRow.classList.remove('bg-secondary-fixed/50');
+          }, 1500);
+        }
+      });
+    });
+
+    // Mock Download JSON handler
+    const btnJson = document.getElementById('btn-download-json');
+    if (btnJson) {
+      btnJson.addEventListener('click', () => {
+        const mockManifest = {
+          file: "street-scene-ny.jpg",
+          timestamp: "2024-10-24T10:42:00Z",
+          latency_sec: 0.82,
+          model: "YOLO11s+ResNet50",
+          detections: [
+            { id: 1, label: "person", confidence: 0.962, bbox: [0.002, 0.533, 0.062, 0.906] },
+            { id: 2, label: "yellow taxi", confidence: 0.947, bbox: [0.765, 0.565, 0.997, 0.796] },
+            { id: 3, label: "bicycle", confidence: 0.913, bbox: [0.562, 0.524, 0.638, 0.888] },
+            { id: 4, label: "person", confidence: 0.894, bbox: [0.062, 0.586, 0.126, 0.915] },
+            { id: 5, label: "backpack", confidence: 0.885, bbox: [0.590, 0.577, 0.638, 0.684] },
+            { id: 6, label: "person", confidence: 0.871, bbox: [0.230, 0.577, 0.285, 0.830] },
+            { id: 7, label: "car", confidence: 0.842, bbox: [0.461, 0.551, 0.509, 0.613] }
+          ]
+        };
+        const blob = new Blob([JSON.stringify(mockManifest, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "visionai_analysis_results.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    // Interactive button toasts
+    const alertBtns = ['btn-save-history', 'btn-export-pdf', 'btn-raw-tensor', 'btn-download-img', 'btn-re-run'];
+    alertBtns.forEach(id => {
+      const b = document.getElementById(id);
+      if (b) {
+        b.addEventListener('click', () => {
+          const originalText = b.innerText;
+          b.classList.add('opacity-75');
+          setTimeout(() => b.classList.remove('opacity-75'), 400);
+        });
+      }
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-low mt-auto"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl mb-space-xl"><div class="space-y-space-sm md:col-span-1"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary">VisionAI</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant">v2.4</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Architected for dual-stream neural inference combining YOLO11s 80-class object detection bounds and ResNet-50 feature classification topologies.</p></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">Dataset &amp; Pipeline</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li>COCO 2017 (80 Object Classes)</li><li>ImageNet-1K Pretrained Weights</li><li>Confidence Threshold: τ ≥ 0.45</li><li>NMS IOU Overlap: 0.50</li></ul></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">Architecture Stack</h4><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li>FastAPI Asynchronous Inference Engine</li><li>React Vite Client Shell</li><li>ONNX Runtime Acceleration</li><li>TensorFlow / PyTorch Dual Backing</li></ul></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">Capstone Governance</h4><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p>Machine Perception Specialization</p><p>Internship Evaluation Panel / Review 2024</p><div class="pt-space-xs flex flex-col gap-1"><a class="hover:text-secondary transition-colors inline-block" href="#">API Swagger Docs ↗</a><a class="hover:text-secondary transition-colors inline-block" href="#">Model Weights &amp; Benchmark Report ↗</a></div></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><p>© 2024 VisionAI Capstone Project. All benchmark metrics validated under standard COCO mAP[0.50:0.95].</p><div class="flex gap-space-md"><a class="hover:text-on-surface transition-colors" href="#">Architecture Schema</a><a class="hover:text-on-surface transition-colors" href="#">Inference Logs</a><a class="hover:text-on-surface transition-colors" href="#">Model Cards</a></div></div></div></footer></body></html>
