@@ -2,6 +2,13 @@
 // instead of using fetch() directly, so swapping the mock implementations for
 // real FastAPI calls later (see project-brain/03_ML_BACKEND.md for the planned
 // endpoints) only requires editing this file.
+//
+// Real-backend integration: set VITE_API_BASE_URL (see .env.example) to point
+// at a running FastAPI instance (see backend/README.md). When unset, every
+// function below falls back to the local mock store exactly as before — the
+// mock path is untouched. When set, requests go to the real API and its
+// snake_case response is adapted into the exact shape these functions have
+// always returned, so no page or component needed to change.
 import {
   listAnalyses,
   findAnalysis,
@@ -25,6 +32,152 @@ const MOCK_LATENCY_MS = 450;
 
 export const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
 export const MAX_FILE_SIZE_BYTES = 25 * 1024 * 1024; // 25MB, matches the Analyze page copy
+
+// ---------------------------------------------------------------------------
+// Real-backend switch
+// ---------------------------------------------------------------------------
+
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+const USE_REAL_API = Boolean(API_BASE_URL);
+const API_V1 = `${API_BASE_URL}/api/v1`;
+
+const DETECTION_COLOR_PALETTE = ['secondary', 'emerald', 'amber', 'purple'];
+const DETECTION_HEX_BY_COLOR_CLASS = {
+  secondary: '#2170e4',
+  emerald: '#10b981',
+  amber: '#f59e0b',
+  purple: '#9333ea',
+};
+
+async function parseErrorMessage(response, fallback) {
+  try {
+    const body = await response.json();
+    return body?.detail || fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function pixelBboxToPercent(bbox, width, height) {
+  if (!width || !height) return { x: 0, y: 0, width: 0, height: 0 };
+  return {
+    x: (bbox.x1 / width) * 100,
+    y: (bbox.y1 / height) * 100,
+    width: ((bbox.x2 - bbox.x1) / width) * 100,
+    height: ((bbox.y2 - bbox.y1) / height) * 100,
+  };
+}
+
+/** Backend AnalysisResponse (snake_case) -> the camelCase shape every page/
+ * component already consumes (same shape the mock store has always used). */
+function transformAnalysisResponse(data) {
+  const detections = (data.detections || []).map((d, index) => {
+    const colorClass = DETECTION_COLOR_PALETTE[index % DETECTION_COLOR_PALETTE.length];
+    return {
+      id: d.id,
+      label: d.class_name,
+      colorClass,
+      hexColor: DETECTION_HEX_BY_COLOR_CLASS[colorClass],
+      bbox: pixelBboxToPercent(d.bbox, data.width, data.height),
+      detectionConfidence: d.detection_confidence,
+      classification: d.classification.class_name,
+      classificationConfidence: d.classification.confidence,
+    };
+  });
+
+  const classCounts = detections.reduce((acc, d) => {
+    acc[d.label] = (acc[d.label] || 0) + 1;
+    return acc;
+  }, {});
+
+  const topPrediction = data.top_classifications?.[0];
+
+  return {
+    id: data.id,
+    filename: data.filename,
+    createdAt: data.created_at,
+    processingTimeMs: Math.round((data.processing_time || 0) * 1000),
+    width: data.width,
+    height: data.height,
+    fileSizeBytes: data.file_size_bytes,
+    format: (data.image_format || 'jpeg').toUpperCase(),
+    originalImage: `${API_BASE_URL}${data.original_image_url}`,
+    annotatedImage: data.annotated_image_url ? `${API_BASE_URL}${data.annotated_image_url}` : null,
+    sceneClassification: topPrediction?.class_name || data.summary || 'Unclassified scene',
+    sceneConfidence: topPrediction?.confidence || 0,
+    detections,
+    topPredictions: (data.top_classifications || []).map((t) => ({
+      class: t.class_name,
+      confidence: t.confidence,
+    })),
+    avgDetectionConfidence: data.average_confidence,
+    classCounts,
+    distinctClasses: Object.keys(classCounts).length,
+    settings: {
+      threshold: data.confidence_threshold,
+      detectionEnabled: data.detection_enabled,
+      classificationEnabled: data.classification_enabled,
+    },
+  };
+}
+
+function transformModelsAndMetrics(models, metrics) {
+  const toModelInfo = (m) => ({
+    name: m.name,
+    role: m.purpose,
+    weightsFile: m.weights_path?.split(/[/\\]/).pop() || m.weights_path,
+    backbone: m.architecture,
+    inputSize: m.name === 'YOLO11s' ? '640 × 640 × 3 px' : '224 × 224 × 3 px',
+    framework: m.framework,
+    taxonomy: `${m.class_count} COCO classes`,
+    params: m.status,
+  });
+
+  return {
+    modelInfo: {
+      detection: toModelInfo(models.detection),
+      classification: toModelInfo(models.classification),
+      system: {
+        dataset: metrics.dataset.name,
+        numClasses: metrics.dataset.num_classes,
+        framework: models.detection.framework,
+        trainingHardware: metrics.device.training_hardware,
+        servingDevice: metrics.device.serving_device,
+        batchSize: 32,
+        optimizer: 'AdamW (η = 1e-3)',
+        epochs: 50,
+      },
+    },
+    detection: {
+      precision: metrics.detection.precision,
+      recall: metrics.detection.recall,
+      map50: metrics.detection.map50,
+      map5095: metrics.detection.map50_95,
+    },
+    classification: {
+      top1: metrics.classification.top1_accuracy,
+      top5: metrics.classification.top5_accuracy,
+      balancedAccuracy: metrics.classification.balanced_accuracy,
+      macroF1: metrics.classification.macro_f1,
+      weightedF1: metrics.classification.weighted_f1,
+    },
+    detectionTrainingCurve: metrics.training_history.detection.map((e) => ({
+      epoch: e.epoch,
+      boxLoss: e.box_loss,
+      classLoss: e.class_loss,
+      map50: e.map50,
+    })),
+    classificationTrainingCurve: metrics.training_history.classification.map((e) => ({
+      epoch: e.epoch,
+      trainAcc: e.train_accuracy,
+      valAcc: e.val_accuracy,
+      valLoss: e.val_loss,
+    })),
+    confusionMatrix: metrics.confusion_matrix.matrix,
+    confusionMatrixClasses: metrics.confusion_matrix.classes,
+    perClassMetrics: metrics.per_class_metrics,
+  };
+}
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -110,13 +263,38 @@ async function runMockInference({ template, overrides, settings, onStageChange, 
   return analysis;
 }
 
+async function realAnalyzeRequest(file, settings, onStageChange) {
+  onStageChange?.('preparing');
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('confidence_threshold', String(settings.confidenceThreshold ?? 0.25));
+  formData.append('detection_enabled', String(settings.detectionEnabled ?? true));
+  formData.append('classification_enabled', String(settings.classificationEnabled ?? true));
+
+  onStageChange?.('detecting');
+  const response = await fetch(`${API_V1}/analyze`, { method: 'POST', body: formData });
+  onStageChange?.('classifying');
+
+  if (!response.ok) {
+    throw new Error(await parseErrorMessage(response, 'Analysis failed. Please try again.'));
+  }
+
+  const data = await response.json();
+  onStageChange?.('finalizing');
+  return transformAnalysisResponse(data);
+}
+
 /**
- * Runs the (mock) YOLO11s + ResNet50 pipeline against an uploaded file.
- * Real backend equivalent: POST /api/analyze (multipart form + settings).
+ * Runs the YOLO11s + ResNet50 pipeline (real backend if VITE_API_BASE_URL is
+ * set, otherwise the local mock) against an uploaded file.
  */
 export async function analyzeImage(file, settings = {}, { onStageChange } = {}) {
   const validationError = validateImageFile(file);
   if (validationError) throw new Error(validationError);
+
+  if (USE_REAL_API) {
+    return realAnalyzeRequest(file, settings, onStageChange);
+  }
 
   const dataUrl = await readFileAsDataUrl(file);
   const { width, height } = await readImageDimensions(dataUrl);
@@ -141,8 +319,20 @@ export async function analyzeImage(file, settings = {}, { onStageChange } = {}) 
 /**
  * Re-runs the pipeline against an already-analyzed image (Results/History
  * "Re-run" and "Run Again" actions), producing a new history entry.
+ *
+ * Against the real backend this calls POST /history/{id}/rerun, which
+ * always reuses the settings the analysis was originally run with —
+ * `settingsOverride` only applies in mock mode.
  */
 export async function rerunAnalysis(sourceAnalysis, settingsOverride) {
+  if (USE_REAL_API) {
+    const response = await fetch(`${API_V1}/history/${sourceAnalysis.id}/rerun`, { method: 'POST' });
+    if (!response.ok) {
+      throw new Error(await parseErrorMessage(response, 'Re-running this analysis failed.'));
+    }
+    return transformAnalysisResponse(await response.json());
+  }
+
   const settings = settingsOverride || {
     confidenceThreshold: sourceAnalysis.settings?.threshold ?? 0.25,
     detectionEnabled: sourceAnalysis.settings?.detectionEnabled ?? true,
@@ -165,15 +355,16 @@ export async function rerunAnalysis(sourceAnalysis, settingsOverride) {
   });
 }
 
-/** Lets the Analyze page offer ready-made images without a real upload. */
+/**
+ * Lets the Analyze page offer ready-made images without a real upload.
+ * These always run through the local mock pipeline, even when a real
+ * backend is configured — the sample images are remote demo assets and
+ * fetching their bytes cross-origin to re-upload them isn't reliable.
+ */
 export function getSampleImages() {
   return SAMPLE_TEMPLATES;
 }
 
-/**
- * Same pipeline as analyzeImage(), but starting from one of the bundled
- * sample images instead of a user-uploaded file (no FileReader step needed).
- */
 export async function analyzeSampleImage(sampleId, settings = {}, { onStageChange } = {}) {
   const sample = SAMPLE_TEMPLATES.find((s) => s.id === sampleId);
   if (!sample) throw new Error('Unknown sample image.');
@@ -196,8 +387,31 @@ export async function analyzeSampleImage(sampleId, settings = {}, { onStageChang
   });
 }
 
-/** Real backend equivalent: GET /api/history */
+/** Real backend equivalent: GET /api/v1/history */
 export async function getHistory({ search = '', sort = 'newest' } = {}) {
+  if (USE_REAL_API) {
+    const params = new URLSearchParams({ page: '1', page_size: '100', sort });
+    if (search.trim()) params.set('search', search.trim());
+
+    const response = await fetch(`${API_V1}/history?${params}`);
+    if (!response.ok) {
+      throw new Error(await parseErrorMessage(response, 'Could not load history.'));
+    }
+    const { items } = await response.json();
+
+    // The list endpoint is intentionally lightweight (no detections array),
+    // but History/HistoryDetails render full analyses — fetch each one's
+    // full detail in parallel.
+    const detailed = await Promise.all(
+      items.map(async (item) => {
+        const detailResponse = await fetch(`${API_V1}/history/${item.id}`);
+        if (!detailResponse.ok) return null;
+        return transformAnalysisResponse(await detailResponse.json());
+      }),
+    );
+    return detailed.filter(Boolean);
+  }
+
   await delay(280);
   let items = listAnalyses();
 
@@ -227,23 +441,51 @@ export async function getHistory({ search = '', sort = 'newest' } = {}) {
   return items;
 }
 
-/** Real backend equivalent: GET /api/history/{id} */
+/** Real backend equivalent: GET /api/v1/history/{id} */
 export async function getHistoryItem(id) {
+  if (USE_REAL_API) {
+    const response = await fetch(`${API_V1}/history/${id}`);
+    if (!response.ok) {
+      throw new Error(await parseErrorMessage(response, `No analysis found with id "${id}".`));
+    }
+    return transformAnalysisResponse(await response.json());
+  }
+
   await delay(220);
   const item = findAnalysis(id);
   if (!item) throw new Error(`No analysis found with id "${id}".`);
   return item;
 }
 
-/** Real backend equivalent: DELETE /api/history/{id} */
+/** Real backend equivalent: DELETE /api/v1/history/{id} */
 export async function deleteHistoryItem(id) {
+  if (USE_REAL_API) {
+    const response = await fetch(`${API_V1}/history/${id}`, { method: 'DELETE' });
+    if (!response.ok && response.status !== 204) {
+      throw new Error(await parseErrorMessage(response, 'Delete failed. Please try again.'));
+    }
+    return { success: true };
+  }
+
   await delay(220);
   removeAnalysis(id);
   return { success: true };
 }
 
-/** Real backend equivalent: GET /api/metrics */
+/** Real backend equivalent: GET /api/v1/models + GET /api/v1/metrics */
 export async function getModelMetrics() {
+  if (USE_REAL_API) {
+    const [modelsResponse, metricsResponse] = await Promise.all([
+      fetch(`${API_V1}/models`),
+      fetch(`${API_V1}/metrics`),
+    ]);
+    if (!modelsResponse.ok || !metricsResponse.ok) {
+      throw new Error('Could not load model metrics.');
+    }
+    const [models, metrics] = await Promise.all([modelsResponse.json(), metricsResponse.json()]);
+    return transformModelsAndMetrics(models, metrics);
+  }
+
   await delay(320);
   return {
     modelInfo: MODEL_INFO,
@@ -259,14 +501,27 @@ export async function getModelMetrics() {
 
 /**
  * Triggers a client-side download of either the annotated image or the raw
- * result JSON. Real backend equivalent: GET /api/media/{path} for the image,
- * or serializing the same payload returned by /api/analyze for the JSON.
+ * result JSON. Real backend equivalent: GET /api/v1/results/{id}/annotated-image
+ * (or /original-image) for the image, GET /api/v1/results/{id}/json for the JSON.
  */
-export function downloadResult(analysis, format = 'json') {
+export async function downloadResult(analysis, format = 'json') {
   const baseName = analysis.filename.replace(/\.[^.]+$/, '');
   const link = document.createElement('a');
 
   if (format === 'image') {
+    // Cross-origin URLs ignore the `download` attribute and navigate
+    // instead, so fetch the bytes first and download from a blob: URL.
+    if (/^https?:\/\//i.test(analysis.annotatedImage)) {
+      const response = await fetch(analysis.annotatedImage);
+      const blob = await response.blob();
+      link.href = URL.createObjectURL(blob);
+      link.download = `${baseName}_annotated.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(link.href);
+      return;
+    }
     link.href = analysis.annotatedImage;
     link.download = `${baseName}_annotated.png`;
   } else {
