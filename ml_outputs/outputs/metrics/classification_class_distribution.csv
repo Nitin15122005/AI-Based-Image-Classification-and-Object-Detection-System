@@ -1,0 +1,81 @@
+class_id,class_name,train_crops,val_crops
+0,person,500,100
+1,bicycle,500,100
+2,car,500,100
+3,motorcycle,500,100
+4,airplane,431,100
+5,bus,479,100
+6,train,438,100
+7,truck,500,100
+8,boat,500,100
+9,traffic light,273,100
+10,fire hydrant,220,75
+11,stop sign,212,50
+12,parking meter,180,45
+13,bench,500,100
+14,bird,485,100
+15,cat,411,100
+16,dog,472,100
+17,horse,500,100
+18,sheep,500,100
+19,cow,500,100
+20,elephant,500,100
+21,bear,263,68
+22,zebra,500,100
+23,giraffe,500,100
+24,backpack,500,100
+25,umbrella,500,100
+26,handbag,500,100
+27,tie,236,100
+28,suitcase,500,100
+29,frisbee,176,64
+30,skis,341,100
+31,snowboard,219,34
+32,sports ball,137,60
+33,kite,486,100
+34,baseball bat,256,98
+35,baseball glove,227,78
+36,skateboard,367,100
+37,surfboard,361,100
+38,tennis racket,314,100
+39,bottle,500,100
+40,wine glass,450,100
+41,cup,500,100
+42,fork,381,100
+43,knife,385,100
+44,spoon,361,100
+45,bowl,500,100
+46,banana,500,100
+47,apple,500,100
+48,sandwich,441,100
+49,orange,500,100
+50,broccoli,500,100
+51,carrot,500,100
+52,hot dog,374,93
+53,pizza,500,100
+54,donut,500,100
+55,cake,500,100
+56,chair,500,100
+57,couch,500,100
+58,potted plant,500,100
+59,bed,402,100
+60,dining table,500,100
+61,toilet,407,100
+62,tv,500,100
+63,laptop,486,100
+64,mouse,200,67
+65,remote,259,100
+66,keyboard,327,100
+67,cell phone,229,100
+68,microwave,272,52
+69,oven,388,100
+70,toaster,149,8
+71,sink,477,100
+72,refrigerator,309,100
+73,book,500,100
+74,clock,298,100
+75,vase,405,100
+76,scissors,246,26
+77,teddy bear,500,100
+78,hair drier,124,9
+79,toothbrush,169,33

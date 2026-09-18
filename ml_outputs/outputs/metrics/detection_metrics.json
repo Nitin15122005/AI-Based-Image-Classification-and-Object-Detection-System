@@ -1,0 +1,28 @@
+{
+  "model": "yolo11s.pt",
+  "image_size": 640,
+  "batch_size": 4,
+  "epochs_requested": 35,
+  "epochs_completed": 13,
+  "train_images": 12000,
+  "train_source": "train2017",
+  "val_images": 4952,
+  "val_source": "val2017",
+  "monitoring_val_images": 1000,
+  "train_seconds": 4622.506237268448,
+  "precision": 0.6455710456384611,
+  "recall": 0.551467346412104,
+  "mAP50": 0.5850151896149395,
+  "mAP50_95": 0.4176128822264016,
+  "fitness": 0.4176128822264016,
+  "loss_guard": {
+    "enabled": true,
+    "triggered": false,
+    "trigger_epoch": null,
+    "patience": 3,
+    "min_relative_improvement": 0.01,
+    "best_total_loss": null,
+    "reason": null
+  },
+  "classes_evaluated": 80
+}

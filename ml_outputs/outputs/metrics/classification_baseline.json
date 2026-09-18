@@ -1,0 +1,5 @@
+{
+  "description": "ResNet50 ImageNet features, frozen backbone, trained 80-way head",
+  "epochs": 3,
+  "val_accuracy": 0.6363636363636364
+}

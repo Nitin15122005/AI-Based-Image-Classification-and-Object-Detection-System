@@ -1,0 +1,238 @@
+{
+  "run_profile": "strong",
+  "dataset": {
+    "source": "official:images.cocodataset.org",
+    "annotations_via": "cached",
+    "val_images_via": "cached",
+    "train_images_via": "selective-per-image (section 8)",
+    "kaggle_used": false,
+    "split_mode": "train2017 -> train | val2017 -> val",
+    "train_images": 12000,
+    "val_images": 4952,
+    "train_download_seconds": 4675.188345909119,
+    "train_images_failed": 0
+  },
+  "detection": {
+    "model": "yolo11s.pt",
+    "image_size": 640,
+    "batch_size": 4,
+    "epochs_requested": 35,
+    "epochs_completed": 13,
+    "train_images": 12000,
+    "train_source": "train2017",
+    "val_images": 4952,
+    "val_source": "val2017",
+    "monitoring_val_images": 1000,
+    "train_seconds": 4622.506237268448,
+    "precision": 0.6455710456384611,
+    "recall": 0.551467346412104,
+    "mAP50": 0.5850151896149395,
+    "mAP50_95": 0.4176128822264016,
+    "fitness": 0.4176128822264016,
+    "loss_guard": {
+      "enabled": true,
+      "triggered": false,
+      "trigger_epoch": null,
+      "patience": 3,
+      "min_relative_improvement": 0.01,
+      "best_total_loss": null,
+      "reason": null
+    },
+    "classes_evaluated": 80
+  },
+  "detection_loss_guard": {
+    "enabled": true,
+    "start_epoch": 5,
+    "patience": 3,
+    "min_relative_improvement": 0.01,
+    "best_total_loss": null,
+    "epochs_without_improvement": 0,
+    "triggered": false,
+    "trigger_epoch": null,
+    "reason": null,
+    "history": []
+  },
+  "detection_baseline": {
+    "model": "yolo11s.pt (official COCO weights, not fine-tuned)",
+    "val_images": 4952,
+    "precision": 0.7053884348914206,
+    "recall": 0.5769856756589643,
+    "mAP50": 0.6321813889766373,
+    "mAP50_95": 0.46390648848130067
+  },
+  "detection_baseline_delta": {
+    "baseline_mAP50_95": 0.46390648848130067,
+    "finetuned_mAP50_95": 0.4176128822264016,
+    "delta_mAP50_95": -0.04629360625489909,
+    "fraction_of_baseline": 0.9002091856778047,
+    "baseline_mAP50": 0.6321813889766373,
+    "finetuned_mAP50": 0.5850151896149395,
+    "delta_mAP50": -0.04716619936169786
+  },
+  "classification": {
+    "model": "resnet50",
+    "image_size": 224,
+    "batch_size": 16,
+    "epochs_completed": 15,
+    "train_crops": 32023,
+    "val_crops": 7260,
+    "train_seconds": 2863.7401852607727,
+    "accuracy": 0.7304407713498623,
+    "top1_accuracy": 0.7304407713498623,
+    "top5_accuracy": 0.9157024621963501,
+    "balanced_accuracy": 0.7295454695636934,
+    "precision_macro": 0.7297157871090013,
+    "recall_macro": 0.7295454695636934,
+    "f1_macro": 0.7230811222256088,
+    "precision_weighted": 0.7372609249428347,
+    "recall_weighted": 0.7304407713498623,
+    "f1_weighted": 0.7292676681457275,
+    "best_val_accuracy_during_training": 0.7304407713498623,
+    "classes_present_in_val": 80,
+    "linear_probe_baseline_accuracy": 0.6363636363636364,
+    "gain_over_linear_probe": 0.09407713498622594
+  },
+  "classification_baseline": {
+    "description": "ResNet50 ImageNet features, frozen backbone, trained 80-way head",
+    "epochs": 3,
+    "val_accuracy": 0.6363636363636364
+  },
+  "detection_error_analysis": {
+    "images_analysed": 500,
+    "confidence_threshold": 0.25,
+    "iou_threshold": 0.5,
+    "true_positives": 2119,
+    "false_positives": 1291,
+    "false_negatives": 1433,
+    "precision_at_threshold": 0.6214076246334311,
+    "recall_at_threshold": 0.5965653153153153,
+    "recall_by_area": {
+      "small": 0.34205776173285196,
+      "medium": 0.6168,
+      "large": 0.8115577889447236
+    },
+    "instances_by_area": {
+      "medium": 1250,
+      "large": 1194,
+      "small": 1108
+    },
+    "mean_confidence_tp": 0.6939634190043394,
+    "mean_confidence_fp": 0.4399334572480687,
+    "top_false_positive_classes": [
+      [
+        "person",
+        239
+      ],
+      [
+        "book",
+        89
+      ],
+      [
+        "chair",
+        88
+      ],
+      [
+        "bottle",
+        48
+      ],
+      [
+        "car",
+        32
+      ]
+    ],
+    "top_missed_classes": [
+      [
+        "person",
+        311
+      ],
+      [
+        "chair",
+        92
+      ],
+      [
+        "car",
+        73
+      ],
+      [
+        "book",
+        72
+      ],
+      [
+        "bottle",
+        70
+      ]
+    ],
+    "top_class_confusions": [
+      {
+        "true": "car",
+        "predicted": "truck",
+        "count": 10
+      },
+      {
+        "true": "baseball bat",
+        "predicted": "hot dog",
+        "count": 6
+      },
+      {
+        "true": "person",
+        "predicted": "person",
+        "count": 5
+      },
+      {
+        "true": "truck",
+        "predicted": "car",
+        "count": 4
+      },
+      {
+        "true": "sandwich",
+        "predicted": "pizza",
+        "count": 4
+      },
+      {
+        "true": "cow",
+        "predicted": "zebra",
+        "count": 3
+      },
+      {
+        "true": "cake",
+        "predicted": "donut",
+        "count": 3
+      },
+      {
+        "true": "chair",
+        "predicted": "person",
+        "count": 3
+      }
+    ]
+  },
+  "classification_dataset": {
+    "total_train_crops": 32023,
+    "total_val_crops": 7260,
+    "num_classes": 80,
+    "classes_with_train_data": 80,
+    "classes_with_val_data": 80,
+    "min_train_per_class": 124,
+    "max_train_per_class": 500,
+    "median_train_per_class": 474.5,
+    "min_val_per_class": 8,
+    "max_val_per_class": 100,
+    "classes_without_train_crops": [],
+    "classes_without_val_crops": []
+  },
+  "benchmark": {
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "detection_image_size": 640,
+    "classification_image_size": 224,
+    "detector_load_ms": 44.50821876525879,
+    "classifier_load_ms": 349.21956062316895,
+    "detection_ms_per_image_mean": 12.527215480804443,
+    "detection_ms_per_image_std": 1.1107196200666443,
+    "classification_ms_per_crop_mean": 9.770026206970215,
+    "classification_ms_per_crop_std": 2.005815731681331,
+    "end_to_end_ms_per_image_mean": 61.11724376678467,
+    "end_to_end_ms_per_image_std": 34.845613516012314,
+    "detection_fps": 79.826199328359
+  },
+  "tests_passed": 14,
+  "tests_total": 14
+}

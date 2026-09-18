@@ -1,0 +1,3 @@
+Component,Model,Dataset,Classes,Main metrics,Best result
+Object detection,yolo11s.pt,COCO 2017 - 12000 train2017 images / 4952 val2017 images,80,Precision / Recall / mAP50 / mAP50-95,P=0.6456  R=0.5515  mAP50=0.5850  mAP50-95=0.4176  (baseline mAP50-95=0.4639)
+Object classification,resnet50,COCO object crops (32023 train / 7260 val),80,Accuracy / Macro F1 / Weighted F1 / Top-5,Acc=0.7304  MacroF1=0.7231  WeightedF1=0.7293  Top5=0.9157  (linear probe=0.6364)

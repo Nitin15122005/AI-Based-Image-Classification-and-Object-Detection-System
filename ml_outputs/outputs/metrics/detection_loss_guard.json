@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "start_epoch": 5,
+  "patience": 3,
+  "min_relative_improvement": 0.01,
+  "best_total_loss": null,
+  "epochs_without_improvement": 0,
+  "triggered": false,
+  "trigger_epoch": null,
+  "reason": null,
+  "history": []
+}

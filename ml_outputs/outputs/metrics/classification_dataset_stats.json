@@ -1,0 +1,14 @@
+{
+  "total_train_crops": 32023,
+  "total_val_crops": 7260,
+  "num_classes": 80,
+  "classes_with_train_data": 80,
+  "classes_with_val_data": 80,
+  "min_train_per_class": 124,
+  "max_train_per_class": 500,
+  "median_train_per_class": 474.5,
+  "min_val_per_class": 8,
+  "max_val_per_class": 100,
+  "classes_without_train_crops": [],
+  "classes_without_val_crops": []
+}

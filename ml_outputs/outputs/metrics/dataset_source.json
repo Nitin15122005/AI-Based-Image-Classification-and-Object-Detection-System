@@ -1,0 +1,12 @@
+{
+  "source": "official:images.cocodataset.org",
+  "annotations_via": "cached",
+  "val_images_via": "cached",
+  "train_images_via": "selective-per-image (section 8)",
+  "kaggle_used": false,
+  "split_mode": "train2017 -> train | val2017 -> val",
+  "train_images": 12000,
+  "val_images": 4952,
+  "train_download_seconds": 4675.188345909119,
+  "train_images_failed": 0
+}

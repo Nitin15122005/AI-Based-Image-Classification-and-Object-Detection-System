@@ -1,0 +1,108 @@
+{
+  "images_analysed": 500,
+  "confidence_threshold": 0.25,
+  "iou_threshold": 0.5,
+  "true_positives": 2119,
+  "false_positives": 1291,
+  "false_negatives": 1433,
+  "precision_at_threshold": 0.6214076246334311,
+  "recall_at_threshold": 0.5965653153153153,
+  "recall_by_area": {
+    "small": 0.34205776173285196,
+    "medium": 0.6168,
+    "large": 0.8115577889447236
+  },
+  "instances_by_area": {
+    "medium": 1250,
+    "large": 1194,
+    "small": 1108
+  },
+  "mean_confidence_tp": 0.6939634190043394,
+  "mean_confidence_fp": 0.4399334572480687,
+  "top_false_positive_classes": [
+    [
+      "person",
+      239
+    ],
+    [
+      "book",
+      89
+    ],
+    [
+      "chair",
+      88
+    ],
+    [
+      "bottle",
+      48
+    ],
+    [
+      "car",
+      32
+    ]
+  ],
+  "top_missed_classes": [
+    [
+      "person",
+      311
+    ],
+    [
+      "chair",
+      92
+    ],
+    [
+      "car",
+      73
+    ],
+    [
+      "book",
+      72
+    ],
+    [
+      "bottle",
+      70
+    ]
+  ],
+  "top_class_confusions": [
+    {
+      "true": "car",
+      "predicted": "truck",
+      "count": 10
+    },
+    {
+      "true": "baseball bat",
+      "predicted": "hot dog",
+      "count": 6
+    },
+    {
+      "true": "person",
+      "predicted": "person",
+      "count": 5
+    },
+    {
+      "true": "truck",
+      "predicted": "car",
+      "count": 4
+    },
+    {
+      "true": "sandwich",
+      "predicted": "pizza",
+      "count": 4
+    },
+    {
+      "true": "cow",
+      "predicted": "zebra",
+      "count": 3
+    },
+    {
+      "true": "cake",
+      "predicted": "donut",
+      "count": 3
+    },
+    {
+      "true": "chair",
+      "predicted": "person",
+      "count": 3
+    }
+  ]
+}

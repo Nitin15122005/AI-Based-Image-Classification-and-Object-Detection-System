@@ -1,0 +1,11 @@
+{
+  "observations": [
+    "Recall is lowest for small objects (0.342 over 1108 instances) and highest for large objects (0.812 over 1194 instances).",
+    "Matched detections average 0.694 confidence against 0.440 for unmatched ones, a gap of 0.254; raising the threshold above 0.25 removes part of the false positives at some cost in recall.",
+    "Images with at least 10 annotated objects lose 47.8% of their ground truth, against 20.1% for images with three or fewer (122 and 204 images respectively).",
+    "The most common unmatched prediction class is 'person' with 239 occurrences.",
+    "The most frequently missed class is 'person' with 311 misses.",
+    "The most frequent label confusion is car detected as truck (10 well-localised but mislabelled boxes), which is a classification failure rather than a localisation one.",
+    "These figures come from 500 val2017 images at confidence 0.25 and IoU 0.5."
+  ]
+}

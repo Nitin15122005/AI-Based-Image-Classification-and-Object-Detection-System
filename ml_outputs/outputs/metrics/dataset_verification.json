@@ -1,0 +1,24 @@
+{
+  "train": {
+    "split": "train",
+    "images": 12000,
+    "annotations": 92879,
+    "crowd_annotations": 1090,
+    "missing_files": 0,
+    "corrupt_files": 0,
+    "invalid_boxes": 4,
+    "out_of_bounds_boxes": 0,
+    "unknown_categories": 0
+  },
+  "val": {
+    "split": "val",
+    "images": 4952,
+    "annotations": 36781,
+    "crowd_annotations": 446,
+    "missing_files": 0,
+    "corrupt_files": 0,
+    "invalid_boxes": 1,
+    "out_of_bounds_boxes": 0,
+    "unknown_categories": 0
+  }
+}

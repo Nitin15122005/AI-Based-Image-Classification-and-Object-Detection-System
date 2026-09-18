@@ -1,0 +1,8 @@
+case,status,resolution,objects,message,classes,total_ms
+original,ok,640x483,8,8 object(s) detected.,"bed, book, bottle, chair, potted plant",189.0
+half_resolution,ok,320x241,9,9 object(s) detected.,"bed, book, chair, potted plant",95.2
+upscaled_64px,ok,640x483,4,4 object(s) detected.,"chair, potted plant",52.5
+greyscale,ok,640x483,9,9 object(s) detected.,"bed, book, chair, potted plant",90.9
+crowded_scene,ok,640x426,13,13 object(s) detected.,"chair, clock, dining table, potted plant, refrigerator",118.5
+flat_grey,ok,640x480,0,No confident objects detected.,,21.0
+random_noise,ok,640x480,0,No confident objects detected.,,25.5

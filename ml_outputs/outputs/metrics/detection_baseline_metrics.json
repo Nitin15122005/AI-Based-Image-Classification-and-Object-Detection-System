@@ -1,0 +1,8 @@
+{
+  "model": "yolo11s.pt (official COCO weights, not fine-tuned)",
+  "val_images": 4952,
+  "precision": 0.7053884348914206,
+  "recall": 0.5769856756589643,
+  "mAP50": 0.6321813889766373,
+  "mAP50_95": 0.46390648848130067
+}

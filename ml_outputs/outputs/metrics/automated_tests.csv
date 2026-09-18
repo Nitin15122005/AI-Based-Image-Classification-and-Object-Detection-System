@@ -1,0 +1,15 @@
+test,status,detail
+1. Model files exist,PASS,"best_detection.pt, best_classifier.pth, class_names.json"
+2. Class count is 80,PASS,80 classes in mapping and classifier head
+3. Class mapping valid,PASS,mapping is bijective and consistent
+4. Detection model loads,PASS,best_detection.pt loaded with 80 classes
+5. Classification model loads,PASS,checkpoint from epoch 15 (val acc 0.7304)
+6. Inference runs,PASS,1 object(s) on 000000000285.jpg
+7. Boxes within image,PASS,1 boxes inside 586x640
+"8. Confidences in [0,1]",PASS,"all confidences within [0, 1]"
+9. Valid predicted classes,PASS,predictions restricted to the 80 COCO classes
+10. End-to-end pipeline,PASS,pipeline executed on 3 images
+11. Train/val from different splits,PASS,12000 train2017 images / 4952 val2017 images
+12. No image leakage,PASS,"no overlap between train, val and val_fast"
+13. Baselines recorded,PASS,"detection baseline mAP50-95=0.4639, linear probe acc=0.6364"
+14. DataLoader configuration,PASS,"0 workers on 16 cores, persistent=False, no Kaggle dependency"

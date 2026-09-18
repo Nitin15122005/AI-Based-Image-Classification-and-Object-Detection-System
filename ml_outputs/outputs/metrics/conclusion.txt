@@ -1,0 +1,29 @@
+DATASET
+  Training used 12000 images selected from train2017 and validation used 4952 images from val2017 - two disjoint COCO splits, obtained from official:images.cocodataset.org with no Kaggle dependency. Selection was class-balanced towards the rare categories and seeded at 42, so it reproduces exactly.
+
+DETECTION
+  Loss guard: not triggered. Threshold=1.0% meaningful improvement; patience=3 checked epochs after epoch 5.
+  yolo11s.pt was fine-tuned for 13 epochs on 12000 images at 640px (batch 4, 77.0 min). On 4952 held-out val2017 images it reaches precision 0.646, recall 0.551, mAP50 0.585 and mAP50-95 0.418 over 80 classes present in the validation set.
+  The official COCO-pretrained checkpoint scores 0.464 mAP50-95 on the same images, so the fine-tuned model sits 0.046 below it (90% of the reference) while training on 10x fewer images.
+  Strongest classes: cat (AP=0.721), giraffe (AP=0.709), bear (AP=0.704). Weakest non-zero classes: backpack (AP=0.141), book (AP=0.106), hair drier (AP=0.053).
+
+CLASSIFICATION
+  resnet50 was fine-tuned in two phases over 15 epochs on 32023 object crops (47.7 min). On 7260 unseen crops it reaches top-1 accuracy 0.730, top-5 accuracy 0.916, balanced accuracy 0.730, macro F1 0.723 and weighted F1 0.729.
+  A frozen ImageNet backbone with a trained head reaches 0.636, so unfreezing layer3 and layer4 is worth +0.094 accuracy.
+  The +0.001 gap between plain and balanced accuracy reflects the residual class imbalance of the crop dataset, which ranges from 124 to 500 training crops per class (median 474).
+  The most frequent confusion is knife predicted as fork (18 cases).
+
+FAILURE CASES OBSERVED
+  - Recall is lowest for small objects (0.342 over 1108 instances) and highest for large objects (0.812 over 1194 instances).
+  - Matched detections average 0.694 confidence against 0.440 for unmatched ones, a gap of 0.254; raising the threshold above 0.25 removes part of the false positives at some cost in recall.
+  - Images with at least 10 annotated objects lose 47.8% of their ground truth, against 20.1% for images with three or fewer (122 and 204 images respectively).
+  - The most common unmatched prediction class is 'person' with 239 occurrences.
+
+INTEGRATION AND RUNTIME
+  The combined pipeline runs at 61 ms per image on NVIDIA GeForce RTX 4050 Laptop GPU (13 ms detection, 10 ms per crop), workable for an interactive backend but not for real-time video at this resolution.
+  14 of 14 automated tests passed and 7 of 7 robustness cases completed without an exception.
+
+LIMITATIONS
+  All numbers describe a 12000-image subset of train2017 trained for 13 epochs, evaluated on 4952 of the 5 000 val2017 images. They are therefore not directly comparable to published full-COCO leaderboard results, though the pretrained baseline in this notebook was measured on exactly the same images and is comparable.
+  Model selection (early stopping and best-checkpoint choice) used a 1000-image monitoring subset of the validation set, while the reported metrics come from the full set. Both are held out from training, but the reported numbers carry a small optimistic selection bias from this arrangement.
+  The classification set is built from ground-truth crops, so its accuracy is an upper bound on what the integrated pipeline achieves once the detector's boxes are imperfect.

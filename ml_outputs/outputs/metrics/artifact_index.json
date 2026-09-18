@@ -1,0 +1,167 @@
+{
+  "models_and_metrics": [
+    {
+      "file": "models\\class_names.json",
+      "size_kb": 4.8
+    },
+    {
+      "file": "models\\classification\\best_classifier.pth",
+      "size_kb": 92783.3
+    },
+    {
+      "file": "models\\detection\\best_detection.pt",
+      "size_kb": 18763.7
+    },
+    {
+      "file": "models\\experiment_config.json",
+      "size_kb": 1.9
+    },
+    {
+      "file": "models\\preprocessing_config.json",
+      "size_kb": 1.1
+    },
+    {
+      "file": "outputs\\metrics\\automated_tests.csv",
+      "size_kb": 1.0
+    },
+    {
+      "file": "outputs\\metrics\\classification_baseline.json",
+      "size_kb": 0.1
+    },
+    {
+      "file": "outputs\\metrics\\classification_class_distribution.csv",
+      "size_kb": 1.6
+    },
+    {
+      "file": "outputs\\metrics\\classification_confusion_matrix.npy",
+      "size_kb": 50.1
+    },
+    {
+      "file": "outputs\\metrics\\classification_dataset_stats.json",
+      "size_kb": 0.4
+    },
+    {
+      "file": "outputs\\metrics\\classification_metrics.json",
+      "size_kb": 0.8
+    },
+    {
+      "file": "outputs\\metrics\\classification_per_class_f1.csv",
+      "size_kb": 2.4
+    },
+    {
+      "file": "outputs\\metrics\\classification_report.csv",
+      "size_kb": 4.8
+    },
+    {
+      "file": "outputs\\metrics\\classification_top_confusions.json",
+      "size_kb": 0.8
+    },
+    {
+      "file": "outputs\\metrics\\classification_training_history.csv",
+      "size_kb": 1.6
+    },
+    {
+      "file": "outputs\\metrics\\coco_class_distribution.csv",
+      "size_kb": 1.4
+    },
+    {
+      "file": "outputs\\metrics\\dataset_source.json",
+      "size_kb": 0.4
+    },
+    {
+      "file": "outputs\\metrics\\dataset_verification.json",
+      "size_kb": 0.5
+    },
+    {
+      "file": "outputs\\metrics\\detection_baseline_comparison.csv",
+      "size_kb": 0.2
+    },
+    {
+      "file": "outputs\\metrics\\detection_baseline_delta.json",
+      "size_kb": 0.3
+    },
+    {
+      "file": "outputs\\metrics\\detection_baseline_metrics.json",
+      "size_kb": 0.2
+    },
+    {
+      "file": "outputs\\metrics\\detection_baseline_per_class.csv",
+      "size_kb": 3.9
+    },
+    {
+      "file": "outputs\\metrics\\detection_error_analysis.csv",
+      "size_kb": 26.1
+    },
+    {
+      "file": "outputs\\metrics\\detection_error_summary.json",
+      "size_kb": 1.7
+    },
+    {
+      "file": "outputs\\metrics\\detection_loss_guard.json",
+      "size_kb": 0.2
+    },
+    {
+      "file": "outputs\\metrics\\detection_metrics.json",
+      "size_kb": 0.7
+    },
+    {
+      "file": "outputs\\metrics\\detection_observations.json",
+      "size_kb": 0.9
+    },
+    {
+      "file": "outputs\\metrics\\detection_per_class_metrics.csv",
+      "size_kb": 6.9
+    },
+    {
+      "file": "outputs\\metrics\\detection_per_class_vs_baseline.csv",
+      "size_kb": 11.6
+    },
+    {
+      "file": "outputs\\metrics\\detection_training_history.csv",
+      "size_kb": 2.0
+    },
+    {
+      "file": "outputs\\metrics\\performance_benchmark.json",
+      "size_kb": 0.6
+    },
+    {
+      "file": "outputs\\metrics\\robustness_checks.csv",
+      "size_kb": 0.6
+    }
+  ],
+  "plots": [
+    "outputs\\plots\\classification\\confusion_matrix.png",
+    "outputs\\plots\\classification\\crop_distribution.png",
+    "outputs\\plots\\classification\\per_class_f1.png",
+    "outputs\\plots\\classification\\sample_crops_train.png",
+    "outputs\\plots\\classification\\sample_crops_val.png",
+    "outputs\\plots\\classification\\training_curves.png",
+    "outputs\\plots\\detection\\bottom20_classes.png",
+    "outputs\\plots\\detection\\class_distribution.png",
+    "outputs\\plots\\detection\\confusion_matrix.png",
+    "outputs\\plots\\detection\\confusion_matrix_normalized.png",
+    "outputs\\plots\\detection\\error_analysis.png",
+    "outputs\\plots\\detection\\ground_truth_samples.png",
+    "outputs\\plots\\detection\\per_class_ap.png",
+    "outputs\\plots\\detection\\per_class_vs_baseline.png",
+    "outputs\\plots\\detection\\results.png",
+    "outputs\\plots\\detection\\sanity_check_train.png",
+    "outputs\\plots\\detection\\sanity_check_val.png",
+    "outputs\\plots\\detection\\top20_classes.png",
+    "outputs\\plots\\detection\\training_curves.png"
+  ],
+  "predictions": [
+    "outputs\\predictions\\classification_correct.png",
+    "outputs\\predictions\\classification_incorrect.png",
+    "outputs\\predictions\\detection_crowded.png",
+    "outputs\\predictions\\detection_diverse_categories.png",
+    "outputs\\predictions\\detection_false_positives.png",
+    "outputs\\predictions\\detection_low_confidence.png",
+    "outputs\\predictions\\detection_missed.png",
+    "outputs\\predictions\\detection_multi_object.png",
+    "outputs\\predictions\\detection_single_object.png",
+    "outputs\\predictions\\end_to_end_000000435081.png",
+    "outputs\\predictions\\end_to_end_000000441247.png",
+    "outputs\\predictions\\end_to_end_000000540502.png"
+  ]
+}

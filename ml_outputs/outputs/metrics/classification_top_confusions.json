@@ -1,0 +1,52 @@
+[
+  {
+    "true": "knife",
+    "predicted": "fork",
+    "count": 18
+  },
+  {
+    "true": "bowl",
+    "predicted": "cup",
+    "count": 18
+  },
+  {
+    "true": "car",
+    "predicted": "truck",
+    "count": 18
+  },
+  {
+    "true": "handbag",
+    "predicted": "backpack",
+    "count": 17
+  },
+  {
+    "true": "backpack",
+    "predicted": "handbag",
+    "count": 17
+  },
+  {
+    "true": "hot dog",
+    "predicted": "carrot",
+    "count": 15
+  },
+  {
+    "true": "hot dog",
+    "predicted": "sandwich",
+    "count": 14
+  },
+  {
+    "true": "suitcase",
+    "predicted": "backpack",
+    "count": 13
+  },
+  {
+    "true": "apple",
+    "predicted": "orange",
+    "count": 13
+  },
+  {
+    "true": "truck",
+    "predicted": "car",
+    "count": 13
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "detection_image_size": 640,
+  "classification_image_size": 224,
+  "detector_load_ms": 44.50821876525879,
+  "classifier_load_ms": 349.21956062316895,
+  "detection_ms_per_image_mean": 12.527215480804443,
+  "detection_ms_per_image_std": 1.1107196200666443,
+  "classification_ms_per_crop_mean": 9.770026206970215,
+  "classification_ms_per_crop_std": 2.005815731681331,
+  "end_to_end_ms_per_image_mean": 61.11724376678467,
+  "end_to_end_ms_per_image_std": 34.845613516012314,
+  "detection_fps": 79.826199328359
+}

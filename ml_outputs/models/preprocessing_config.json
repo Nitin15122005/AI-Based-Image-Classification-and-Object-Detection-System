@@ -1,0 +1,44 @@
+{
+  "detection": {
+    "model_file": "models\\detection\\best_detection.pt",
+    "architecture": "yolo11s.pt",
+    "image_size": 640,
+    "confidence_threshold": 0.25,
+    "iou_threshold": 0.45,
+    "class_source": "models/class_names.json"
+  },
+  "classification": {
+    "model_file": "models\\classification\\best_classifier.pth",
+    "architecture": "resnet50",
+    "input_size": [
+      224,
+      224
+    ],
+    "resize_mode": "resize_to_square",
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "color_space": "RGB",
+    "crop_padding": 0.05
+  },
+  "dataset": {
+    "name": "COCO 2017",
+    "source": "official:images.cocodataset.org",
+    "split_mode": "train2017 -> train | val2017 -> val",
+    "train_split": "train2017",
+    "val_split": "val2017",
+    "train_images": 12000,
+    "val_images": 4952,
+    "seed": 42,
+    "selection": "class-balanced, at least 150 images per class where COCO allows"
+  }
+}
