@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Download, FileJson, Plus, GripVertical } from 'lucide-react';
 import BoundingBoxOverlay from './BoundingBoxOverlay.jsx';
 import Button from '../ui/Button.jsx';
@@ -29,12 +29,36 @@ export default function DetectionCanvas({
   onDownloadJson,
 }) {
   const containerRef = useRef(null);
+  // Wraps the <img> (and its overlay siblings) and shares the img's exact
+  // rendered box, whether that box is stretched to fill the frame or left at
+  // the image's natural size — see the sizing note below.
+  const imageBoxRef = useRef(null);
   const [splitPercent, setSplitPercent] = useState(50);
   const draggingRef = useRef(false);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+
+  // Measure the visible frame so we know whether the image's natural
+  // resolution exceeds it. Only then do we switch the frame from "fill" mode
+  // (today's object-cover behavior) to a scrollable, natural-size viewport —
+  // this keeps the common case (image fits) pixel-identical to before.
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof ResizeObserver === 'undefined') return undefined;
+    const measure = () => setContainerSize({ width: el.clientWidth, height: el.clientHeight });
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const isOversized =
+    containerSize.width > 0 &&
+    containerSize.height > 0 &&
+    (analysis.width > containerSize.width || analysis.height > containerSize.height);
 
   const handlePointerMove = useCallback((event) => {
-    if (!draggingRef.current || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
+    if (!draggingRef.current || !imageBoxRef.current) return;
+    const rect = imageBoxRef.current.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const pct = Math.min(95, Math.max(5, (x / rect.width) * 100));
     setSplitPercent(pct);
@@ -94,52 +118,71 @@ export default function DetectionCanvas({
 
         <div
           ref={containerRef}
-          className="relative w-full bg-surface-container-high overflow-hidden select-none"
+          className="relative w-full bg-surface-container-high overflow-auto select-none"
           style={{ aspectRatio: '16 / 9' }}
         >
-          <img
-            alt={`${viewMode === 'original' ? 'Original' : 'Annotated'} view of ${analysis.filename}`}
-            className="w-full h-full object-cover block"
-            src={analysis.originalImage}
-          />
-
-          {showAnnotationLayer && (
-            <BoundingBoxOverlay
-              detections={filteredDetections}
-              showBoxes={showBoxes}
-              showLabels={showLabels}
-              showConfidence={showConfidence}
-              activeId={activeId}
-              onHoverBox={onHoverBox}
-              onLeaveBox={() => onHoverBox(null)}
+          {/*
+            Sizing: when the image fits inside the frame, this box fills it
+            exactly (w-full h-full) and the img keeps today's object-cover
+            behavior — pixel-identical to before. When the image's natural
+            resolution exceeds the frame in either dimension, this box
+            shrink-wraps to the img's natural size instead, so the frame
+            (overflow-auto above) scrolls to reveal the rest instead of
+            squeezing or cropping it. The overlay and split-view layers below
+            are siblings inside this same box, so they always share the img's
+            exact coordinate space, scrolled or not.
+          */}
+          <div
+            ref={imageBoxRef}
+            className={classNames('relative', isOversized ? 'inline-block' : 'w-full h-full')}
+          >
+            <img
+              alt={`${viewMode === 'original' ? 'Original' : 'Annotated'} view of ${analysis.filename}`}
+              className={classNames(
+                'block',
+                isOversized ? 'max-w-none w-auto h-auto' : 'w-full h-full object-cover',
+              )}
+              src={analysis.originalImage}
             />
-          )}
 
-          {viewMode === 'split' && (
-            <>
-              {/* Rendered after the overlay so it occludes boxes on the raw (left) side */}
-              <div
-                className="absolute inset-y-0 left-0 overflow-hidden pointer-events-none"
-                style={{ width: `${splitPercent}%` }}
-              >
-                <img
-                  alt="Original (unannotated) comparison"
-                  className="h-full object-cover block max-w-none"
-                  style={{ width: `${(100 / splitPercent) * 100}%` }}
-                  src={analysis.originalImage}
-                />
-              </div>
-              <div
-                className="absolute inset-y-0 w-1 bg-surface-container-lowest shadow-lg cursor-ew-resize flex items-center justify-center z-20 pointer-events-auto"
-                style={{ left: `calc(${splitPercent}% - 2px)` }}
-                onPointerDown={startDragging}
-              >
-                <span className="w-6 h-6 rounded-full bg-surface-container-lowest shadow-md flex items-center justify-center text-on-surface-variant">
-                  <GripVertical className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </>
-          )}
+            {showAnnotationLayer && (
+              <BoundingBoxOverlay
+                detections={filteredDetections}
+                showBoxes={showBoxes}
+                showLabels={showLabels}
+                showConfidence={showConfidence}
+                activeId={activeId}
+                onHoverBox={onHoverBox}
+                onLeaveBox={() => onHoverBox(null)}
+              />
+            )}
+
+            {viewMode === 'split' && (
+              <>
+                {/* Rendered after the overlay so it occludes boxes on the raw (left) side */}
+                <div
+                  className="absolute inset-y-0 left-0 overflow-hidden pointer-events-none"
+                  style={{ width: `${splitPercent}%` }}
+                >
+                  <img
+                    alt="Original (unannotated) comparison"
+                    className="h-full object-cover block max-w-none"
+                    style={{ width: `${(100 / splitPercent) * 100}%` }}
+                    src={analysis.originalImage}
+                  />
+                </div>
+                <div
+                  className="absolute inset-y-0 w-1 bg-surface-container-lowest shadow-lg cursor-ew-resize flex items-center justify-center z-20 pointer-events-auto"
+                  style={{ left: `calc(${splitPercent}% - 2px)` }}
+                  onPointerDown={startDragging}
+                >
+                  <span className="w-6 h-6 rounded-full bg-surface-container-lowest shadow-md flex items-center justify-center text-on-surface-variant">
+                    <GripVertical className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </>
+            )}
+          </div>
 
           <div className="absolute bottom-space-xs right-space-xs px-space-xs py-0.5 rounded bg-primary/80 backdrop-blur-md text-on-primary font-code-sm text-code-sm pointer-events-none">
             {analysis.width}×{analysis.height} · {filteredDetections.length} shown

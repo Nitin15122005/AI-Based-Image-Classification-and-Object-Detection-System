@@ -24,7 +24,9 @@ class Settings(BaseSettings):
     result_dir: str = "./storage/results"
     max_upload_mb: int = 25
 
-    cors_origins: str = "http://localhost:5173"
+    # Comma-separated list; covers both localhost/127.0.0.1 and the ports Vite
+    # falls back to when 5173 is already taken. Overridable via CORS_ORIGINS.
+    cors_origins: str = "http://localhost:5173,http://localhost:5174,http://127.0.0.1:5173,http://127.0.0.1:5174"
 
     model_mode: str = "real"  # "real" (production) or "mock" (dev/testing without weights)
     # Production detector = the official pretrained Ultralytics YOLO11s COCO

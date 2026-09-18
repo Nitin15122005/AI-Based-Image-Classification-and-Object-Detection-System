@@ -1,13 +1,13 @@
 # 00 — Project Overview
 
 ## Purpose
-An internship capstone building a complete, deployable computer-vision **product** — not a notebook exercise. Users upload an image and receive multi-object detection (bounding boxes + class names + confidence) followed by per-object classification (class + confidence + top-K predictions), with results saved for later review and model performance made transparent.
+A complete, deployable computer-vision **product** — not a notebook exercise. Users upload an image and receive multi-object detection (bounding boxes + class names + confidence) followed by per-object classification (class + confidence + top-K predictions), with results saved for later review and model performance made transparent.
 
 ## Final Objective
 Ship an end-to-end system: a React web app, a FastAPI backend with a separate inference layer, and real trained/evaluated ML models (YOLO11s for detection, ResNet50 for classification) on COCO 2017 (80 classes).
 
 ## Target Users
-- Reviewers/evaluators of the capstone (technical depth must be visible: real metrics, real training artifacts).
+- Reviewers/evaluators of the product (technical depth must be visible: real metrics, real training artifacts).
 - End users of the demo product: anyone uploading an image to see detection + classification results.
 
 ## Final Product

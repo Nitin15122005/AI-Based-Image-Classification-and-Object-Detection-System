@@ -2,8 +2,8 @@
   "PROJECT_NAME": "coco-detection-classification",
   "DATASET_NAME": "COCO 2017",
   "NUM_CLASSES": 80,
-  "OUTPUT_DIR": "D:\\AI-Based-Image-Classification-and-Object-Detection-System\\ml_outputs",
-  "DATA_ROOT": "C:\\Users\\Nitin Sharma\\.cache\\visionai_coco",
+  "OUTPUT_DIR": "ml_outputs",
+  "DATA_ROOT": "~\\.cache\\visionai_coco",
   "RANDOM_SEED": 42,
   "RUN_PROFILE": "strong",
   "COCO_HOST_PATHS": [
@@ -18,8 +18,8 @@
   "USE_FULL_TRAIN2017_ZIP": false,
   "KEEP_ARCHIVES": false,
   "MANUAL_ARCHIVE_DIRS": [
-    "C:\\Users\\Nitin Sharma\\.cache\\visionai_coco",
-    "D:\\AI-Based-Image-Classification-and-Object-Detection-System"
+    "~\\.cache\\visionai_coco",
+    "."
   ],
   "TRAIN_SUBSET_IMAGES": 12000,
   "VAL_SUBSET_IMAGES": 5000,

@@ -1,7 +1,7 @@
 task: detect
 mode: train
 model: yolo11s.pt
-data: C:\Users\Nitin Sharma\.cache\visionai_coco\processed\yolo_smoke\smoke.yaml
+data: ~\.cache\visionai_coco\processed\yolo_smoke\smoke.yaml
 epochs: 2
 time: null
 patience: 100
@@ -12,7 +12,7 @@ save_period: -1
 cache: false
 device: '0'
 workers: 0
-project: D:\AI-Based-Image-Classification-and-Object-Detection-System\ml_outputs\logs
+project: ml_outputs\logs
 name: detect_smoke
 exist_ok: true
 pretrained: true
@@ -112,4 +112,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: tracktrack.yaml
-save_dir: D:\AI-Based-Image-Classification-and-Object-Detection-System\ml_outputs\logs\detect_smoke
+save_dir: ml_outputs\logs\detect_smoke

@@ -10,7 +10,7 @@
 ## Model Choices
 - **Detection**: YOLO11s, pretrained COCO weights as the starting point, fine-tuned via transfer learning on the prepared train subset.
 - **Classification**: ResNet50, pretrained ImageNet weights, transfer learning + fine-tuning on the COCO-crop dataset (80-class output head).
-- Rationale: both are pretrained-available, well-supported, and appropriately sized for Colab T4 training within capstone time constraints.
+- Rationale: both are pretrained-available, well-supported, and appropriately sized for Colab T4 training within the project's time constraints.
 
 ## Training Strategy
 - **Environment**: Google Colab, NVIDIA T4 GPU.
@@ -76,5 +76,5 @@ Exact route names/paths may be refined during backend implementation; this list 
 ## Deployment / Storage Direction
 - **Do not commit**: raw COCO dataset, generated crop dataset, trained model weights, large result/history media — all excluded via `.gitignore`.
 - **Model weights**: handled via Git LFS, GitHub Releases, or external cloud storage (exact mechanism chosen during backend/ML implementation phase) — the repo must document how to fetch them, not embed them.
-- **History/media storage**: local filesystem + lightweight DB (e.g., SQLite) is sufficient for the capstone; must persist across backend restarts.
+- **History/media storage**: local filesystem + lightweight DB (e.g., SQLite) is sufficient for this scope; must persist across backend restarts.
 - **Containerization**: Docker direction — separate images/services conceptually for frontend (static build) and backend (FastAPI + inference dependencies); GPU vs. CPU inference at serving time should be configurable, and actual device used should be reported on the Models & Metrics page ("model/device information").

@@ -1,11 +1,15 @@
 # VisionAI Backend
 
 FastAPI backend for the AI-Based Image Classification and Object Detection
-System capstone. Implements the full API surface the React frontend needs
+System. Implements the full API surface the React frontend needs
 (upload, analyze, history, models, metrics) against real PostgreSQL
-persistence, with inference currently served by a deterministic mock
-adapter — see [Inference architecture](#inference-architecture) for how the
-real YOLO11s + ResNet50 models plug in later without any API changes.
+persistence, with production inference served by a pretrained Ultralytics
+YOLO11s (COCO) detector and a fine-tuned ResNet50 classifier — see
+[Inference architecture](#inference-architecture). A deterministic mock
+adapter is also available (`MODEL_MODE=mock`) for frontend-only development
+or environments without the PyTorch/CUDA stack installed; the two adapters
+share one interface, so routes, schemas, and the database never change
+based on which is active.
 
 ## Tech stack
 
@@ -100,8 +104,8 @@ Neon database, or a CI test database purely via `DATABASE_URL`.
 | `UPLOAD_DIR` / `RESULT_DIR` | Where original/annotated images are stored on disk |
 | `MAX_UPLOAD_MB` | Upload size limit |
 | `CORS_ORIGINS` | Comma-separated allowed frontend origins |
-| `MODEL_MODE` | `mock` (default) or `real` |
-| `DETECTION_MODEL_PATH` / `CLASSIFICATION_MODEL_PATH` | Paths to trained weights (only read when `MODEL_MODE=real`) |
+| `MODEL_MODE` | `real` (default, production) or `mock` (dev/testing without weights) |
+| `DETECTION_MODEL_PATH` / `CLASSIFICATION_MODEL_PATH` | Paths to the production weights (only read when `MODEL_MODE=real`) — default to the pretrained `yolo11s.pt` and the fine-tuned `ml_outputs/models/classification/best_classifier.pth` |
 
 ## API overview
 
@@ -119,7 +123,7 @@ All routes are prefixed with `API_PREFIX` (default `/api/v1`).
 | GET | `/results/{id}/annotated-image` | Serves the Pillow-rendered annotated image |
 | GET | `/results/{id}/json` | Same payload as `/analyze`/`/history/{id}` |
 | GET | `/models` | YOLO11s/ResNet50 metadata (name, architecture, class count, mode, status) |
-| GET | `/metrics` | Detection/classification metrics, training curves, confusion matrix, per-class table (mock, clearly labeled) |
+| GET | `/metrics` | Real detection/classification metrics, training curves, confusion matrix, per-class table, read live from `ml_outputs/` |
 
 ## Database schema
 
@@ -135,31 +139,55 @@ per detected object, `ON DELETE CASCADE` to its analysis). See
 `MockInferenceAdapter` (`mock_inference.py`) and `RealInferenceAdapter`
 (`inference.py`) implement. Routes only ever call
 `inference.run_inference()` — they never check `MODEL_MODE` or import a
-specific adapter, so switching from mock to real inference never touches
-`app/api/*`, `app/schemas.py`, or the database schema.
+specific adapter, so mock and real inference are interchangeable without
+touching `app/api/*`, `app/schemas.py`, or the database schema.
 
-### Bringing in the trained models later
+`RealInferenceAdapter` (the `MODEL_MODE=real` default) loads both models
+once at startup via an `@lru_cache`d singleton, runs on CUDA when available
+with automatic CPU fallback, and reproduces the training notebook's exact
+pipeline: YOLO11s detects at `imgsz=640` with a fixed NMS IoU of `0.45` and
+a caller-supplied confidence threshold, each detection's box is clipped and
+cropped from the *original* image, and the crop is classified by ResNet50
+after a `Resize((224,224))` → `ToTensor()` → ImageNet-normalize transform.
+Detection and classification results are combined but never overwrite one
+another, even when they disagree. `load()` raises if either checkpoint's
+class list doesn't exactly match the canonical 80-class COCO order, so a
+mismatched model fails at startup rather than serving silently wrong labels.
 
-1. Copy the Colab-trained weights to the paths configured by
-   `DETECTION_MODEL_PATH` (`best_detection.pt`) and
-   `CLASSIFICATION_MODEL_PATH` (`best_classifier.pth`).
-2. Set `MODEL_MODE=real` in `.env`.
-3. Implement `RealInferenceAdapter.load()/detect()/classify()/predict()` in
-   `app/services/inference.py` (currently raises `NotImplementedError`).
-4. Replace the mock values in `app/services/metrics_service.py` with the
-   notebook's real evaluation output.
+### Production vs. experimental model artifacts
 
-No route, schema, or frontend change is required for this swap.
+- **Production detector** — the official pretrained Ultralytics YOLO11s
+  COCO checkpoint (`DETECTION_MODEL_PATH`, `yolo11s.pt` at the repo root).
+  Ultralytics auto-downloads this file on first load if it isn't already
+  present, so it doesn't need to be committed or manually copied.
+- **Production classifier** — the project's fine-tuned ResNet50
+  (`CLASSIFICATION_MODEL_PATH`, `ml_outputs/models/classification/best_classifier.pth`,
+  epoch 15, val accuracy 0.7304). This one *is* project-specific and must be
+  produced by the training notebook or copied in manually — `load()` raises
+  a clear `FileNotFoundError` if it's missing.
+- **Not used in production** — a fine-tuned YOLO11s detector also exists at
+  `ml_outputs/models/detection/best_detection.pt` from an earlier
+  experiment. It measured lower than the pretrained baseline
+  (mAP50-95 0.418 vs. 0.464 after 13 epochs on a 12k-image subset — see
+  `ml_outputs/outputs/metrics/detection_baseline_delta.json`), so the
+  pretrained checkpoint above is what actually serves requests; the
+  fine-tuned run is kept only as a labeled comparison in `GET /metrics`'s
+  `detection_experiment` field, never as the production number.
 
-## What's mocked right now
+Both `.pt`/`.pth` paths are gitignored — see
+[Model artifact handling](#model-artifact-handling) in the root README for
+the full picture of what a fresh clone needs to provide.
 
-- **Inference**: `MockInferenceAdapter` returns deterministic, realistic
-  COCO-class detections (same image → same result) — see
-  `app/services/mock_inference.py`. Annotated images are real Pillow-drawn
-  artifacts, not placeholders.
-- **Metrics** (`GET /metrics`): explicitly marked `"is_mock": true` with a
-  `note` field; numbers mirror the frontend's placeholder values for
-  consistency across the stack until the Colab notebook produces real ones.
+## Mock mode
 
-Everything else — uploads, validation, database persistence, history,
-delete, rerun, annotated image generation — is real, not mocked.
+Set `MODEL_MODE=mock` to run without any model weights or GPU — useful for
+frontend-only development or CI. `MockInferenceAdapter` returns
+deterministic, realistic COCO-class detections (same image → same result;
+see `app/services/mock_inference.py`), and annotated images are still real
+Pillow-drawn artifacts, not placeholders. `GET /metrics` always returns the
+real evaluation numbers read from `ml_outputs/` regardless of `MODEL_MODE`,
+since those describe the offline evaluation of the models, not the live
+serving mode — only the `is_mock`/`note` fields on the analyze/metrics
+responses reflect which adapter is currently live. Uploads, validation,
+database persistence, history, delete, and rerun are identical in both
+modes.

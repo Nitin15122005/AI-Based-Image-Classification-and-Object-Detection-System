@@ -64,7 +64,7 @@ Legend: **[M]** Mandatory · **[O]** Optional
 - History must persist across sessions (not just in-memory/client state).
 
 ## Acceptance Criteria
-A capstone submission is considered complete when:
+The product is considered complete when:
 1. A user can upload an image and receive a full result (detections + classifications + annotated image + processing time) through the deployed UI, not just via API calls in a notebook.
 2. Detection and classification models are trained (not zero-shot-only) and their real evaluation metrics are visible on the Models & Metrics page, matching saved artifacts (plots, confusion matrix, reports) in `ml/`.
 3. History save/review works end-to-end (create → list → reopen).
