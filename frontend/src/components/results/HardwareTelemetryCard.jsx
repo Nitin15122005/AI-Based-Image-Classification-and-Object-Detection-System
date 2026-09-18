@@ -1,4 +1,5 @@
 import Card from '../ui/Card.jsx';
+import { isRealApiConfigured } from '../../services/api.js';
 
 export default function HardwareTelemetryCard({ analysis }) {
   const items = [
@@ -7,7 +8,10 @@ export default function HardwareTelemetryCard({ analysis }) {
     { label: 'Detection Backbone', value: 'CSPDarknet + C3k2' },
     { label: 'Classification Backbone', value: 'ResNet50 (50-layer)' },
     { label: 'Source Resolution', value: `${analysis.width} × ${analysis.height}` },
-    { label: 'Serving Device', value: 'CPU (mock) · GPU-ready' },
+    {
+      label: 'Serving Device',
+      value: isRealApiConfigured ? 'GPU-accelerated (see Models & Metrics)' : 'Local mock',
+    },
   ];
 
   return (

@@ -42,7 +42,10 @@ export default function ModelCard({ info, metrics, metricLabels, icon: Icon, bad
 
         <div className="pt-space-sm space-y-space-sm">
           <div className="font-label-md text-label-md text-on-surface font-semibold">Validation Metrics</div>
-          <div className="grid grid-cols-5 gap-space-xs text-center">
+          <div
+            className="grid gap-space-xs text-center"
+            style={{ gridTemplateColumns: `repeat(${metricLabels.length}, minmax(0, 1fr))` }}
+          >
             {metricLabels.map(({ key, label }) => (
               <div key={key} className="p-2 rounded bg-surface-container">
                 <div className="font-headline-sm text-headline-sm text-primary">{formatConfidence(metrics[key])}</div>

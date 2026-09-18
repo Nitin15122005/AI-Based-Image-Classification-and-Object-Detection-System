@@ -89,3 +89,10 @@ class ModelAdapter(ABC):
         """Whether this adapter can actually serve predictions right now
         (e.g. real weights found on disk). Mock is always ready."""
         return True
+
+    @property
+    def device_description(self) -> str:
+        """Human-readable serving device (e.g. a CUDA GPU name, or 'CPU'),
+        surfaced via GET /api/v1/metrics. Overridden by adapters that
+        actually run on a device."""
+        return "N/A"

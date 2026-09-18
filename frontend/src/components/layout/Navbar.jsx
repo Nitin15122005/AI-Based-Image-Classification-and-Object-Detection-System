@@ -5,6 +5,7 @@ import Logo from './Logo.jsx';
 import Button from '../ui/Button.jsx';
 import StatusIndicator from '../ui/StatusIndicator.jsx';
 import { classNames } from '../../utils/format.js';
+import { isRealApiConfigured } from '../../services/api.js';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
@@ -57,7 +58,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-space-md">
           <div className="hidden md:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low">
-            <StatusIndicator tone="online" label="API: Mock Ready" />
+            <StatusIndicator
+              tone="online"
+              label={isRealApiConfigured ? 'API: Connected' : 'API: Ready'}
+            />
           </div>
           <div className="hidden lg:flex items-center gap-1.5 px-space-sm py-space-xs rounded-full bg-surface-container-highest">
             <Cpu className="w-3.5 h-3.5 text-on-surface-variant" />

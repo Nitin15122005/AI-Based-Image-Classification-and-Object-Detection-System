@@ -35,9 +35,10 @@ def build_summary(detections: list[MergedDetection], distinct_classes: int) -> s
         )
     top = max(detections, key=lambda d: d.confidence)
     plural = "s" if len(detections) != 1 else ""
+    was_were = "were" if len(detections) != 1 else "was"
     class_plural = "es" if distinct_classes != 1 else ""
     return (
-        f"{len(detections)} object{plural} were detected across {distinct_classes} distinct "
+        f"{len(detections)} object{plural} {was_were} detected across {distinct_classes} distinct "
         f"class{class_plural}. The highest-confidence detection was {top.class_name} at "
         f"{top.confidence * 100:.1f}%."
     )

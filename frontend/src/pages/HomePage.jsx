@@ -4,7 +4,7 @@ import WorkflowSection from '../components/home/WorkflowSection.jsx';
 import ComparisonSection from '../components/home/ComparisonSection.jsx';
 import MetricsPreviewSection from '../components/home/MetricsPreviewSection.jsx';
 import SupportedClassesSection from '../components/home/SupportedClassesSection.jsx';
-import CapstoneCtaSection from '../components/home/CapstoneCtaSection.jsx';
+import CtaSection from '../components/home/CtaSection.jsx';
 import Section from '../components/layout/Section.jsx';
 
 export default function HomePage() {
@@ -27,7 +27,7 @@ export default function HomePage() {
         <SupportedClassesSection />
       </Section>
       <Section>
-        <CapstoneCtaSection />
+        <CtaSection />
       </Section>
     </div>
   );

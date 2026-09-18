@@ -26,9 +26,17 @@ class Settings(BaseSettings):
 
     cors_origins: str = "http://localhost:5173"
 
-    model_mode: str = "mock"  # "mock" or "real"
-    detection_model_path: str = "./ml_models/best_detection.pt"
-    classification_model_path: str = "./ml_models/best_classifier.pth"
+    model_mode: str = "real"  # "real" (production) or "mock" (dev/testing without weights)
+    # Production detector = the official pretrained Ultralytics YOLO11s COCO
+    # checkpoint, NOT the fine-tuned ml_outputs/models/detection/best_detection.pt
+    # — the training notebook's own baseline comparison showed the pretrained
+    # weights outperform the fine-tuned ones (see
+    # ml_outputs/outputs/metrics/detection_baseline_delta.json).
+    detection_model_path: str = "../yolo11s.pt"
+    classification_model_path: str = "../ml_outputs/models/classification/best_classifier.pth"
+    # Where the notebook's real evaluation artifacts (metrics JSON/CSV) live,
+    # read by metrics_service.py. Never written to by the API.
+    ml_outputs_dir: str = "../ml_outputs"
 
     @property
     def cors_origin_list(self) -> list[str]:
@@ -45,6 +53,10 @@ class Settings(BaseSettings):
     @property
     def result_path(self) -> Path:
         return Path(self.result_dir).resolve()
+
+    @property
+    def ml_outputs_path(self) -> Path:
+        return Path(self.ml_outputs_dir).resolve()
 
 
 @lru_cache

@@ -10,7 +10,7 @@ export default function Logo({ className }) {
       <span className="flex flex-col leading-none">
         <span className="font-headline-sm text-headline-sm text-primary tracking-tight">VisionAI</span>
         <span className="font-label-sm text-label-sm px-1.5 py-0.5 mt-1 rounded bg-surface-container-high text-on-surface-variant self-start">
-          Capstone · CV
+          Computer Vision
         </span>
       </span>
     </Link>

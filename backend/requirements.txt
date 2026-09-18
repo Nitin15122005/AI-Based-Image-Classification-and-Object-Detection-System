@@ -10,3 +10,15 @@ python-multipart==0.0.20
 python-dotenv==1.0.1
 pytest==8.3.4
 httpx==0.28.1
+numpy==2.4.6
+
+# --- Real inference (MODEL_MODE=real) -----------------------------------
+# CUDA build (GPU inference) — this machine has an NVIDIA GPU. On a CPU-only
+# machine, replace the next line with:
+#   --extra-index-url https://download.pytorch.org/whl/cpu
+# and drop the "+cu128" suffix from the two pins below; RealInferenceAdapter
+# selects CUDA vs CPU automatically either way.
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+ultralytics==8.4.155

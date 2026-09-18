@@ -5,6 +5,7 @@ import Toggle from '../ui/Toggle.jsx';
 import Slider from '../ui/Slider.jsx';
 import StatusIndicator from '../ui/StatusIndicator.jsx';
 import { formatPercent } from '../../utils/format.js';
+import { isRealApiConfigured } from '../../services/api.js';
 
 export default function AnalysisSettingsPanel({ settings, onChange, onAnalyze, disabled }) {
   return (
@@ -63,7 +64,10 @@ export default function AnalysisSettingsPanel({ settings, onChange, onAnalyze, d
           Analyze Image (YOLO11s + ResNet50)
         </Button>
         <div className="flex items-center justify-between">
-          <StatusIndicator tone="online" label="Backend Ready (Mock Service)" />
+          <StatusIndicator
+            tone="online"
+            label={isRealApiConfigured ? 'Backend Ready' : 'Backend Ready (Local Mock)'}
+          />
         </div>
       </Card>
     </div>

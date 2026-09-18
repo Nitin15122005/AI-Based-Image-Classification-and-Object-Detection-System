@@ -41,6 +41,10 @@ const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, ''
 const USE_REAL_API = Boolean(API_BASE_URL);
 const API_V1 = `${API_BASE_URL}/api/v1`;
 
+/** Whether the app is configured to call a real FastAPI backend (vs. the
+ * local mock store). Used by the navbar's live status indicator. */
+export const isRealApiConfigured = USE_REAL_API;
+
 const DETECTION_COLOR_PALETTE = ['secondary', 'emerald', 'amber', 'purple'];
 const DETECTION_HEX_BY_COLOR_CLASS = {
   secondary: '#2170e4',
@@ -131,6 +135,8 @@ function transformModelsAndMetrics(models, metrics) {
     framework: m.framework,
     taxonomy: `${m.class_count} COCO classes`,
     params: m.status,
+    mode: m.mode,
+    status: m.status,
   });
 
   return {
@@ -143,9 +149,12 @@ function transformModelsAndMetrics(models, metrics) {
         framework: models.detection.framework,
         trainingHardware: metrics.device.training_hardware,
         servingDevice: metrics.device.serving_device,
-        batchSize: 32,
-        optimizer: 'AdamW (η = 1e-3)',
-        epochs: 50,
+        // Real classification fine-tuning config (see experiment_config.json /
+        // coco_detection_classification.ipynb) — the pretrained detector isn't
+        // trained by this project, so there's no equivalent detector config.
+        batchSize: 16,
+        optimizer: 'AdamW (two-phase: head lr=1e-3, fine-tune lr=1e-4)',
+        epochs: 15,
       },
     },
     detection: {
@@ -357,12 +366,16 @@ export async function rerunAnalysis(sourceAnalysis, settingsOverride) {
 
 /**
  * Lets the Analyze page offer ready-made images without a real upload.
- * These always run through the local mock pipeline, even when a real
- * backend is configured — the sample images are remote demo assets and
- * fetching their bytes cross-origin to re-upload them isn't reliable.
+ * These always run through the local mock pipeline — the sample images are
+ * remote demo assets and fetching their bytes cross-origin to re-upload
+ * them for real inference isn't reliable. Hidden entirely when a real
+ * backend is configured: a sample-generated result only ever exists in the
+ * local mock store, but getHistoryItem()/getHistory() query the real API in
+ * that mode, so its Results page would 404 — offering it would be broken,
+ * not just redundant.
  */
 export function getSampleImages() {
-  return SAMPLE_TEMPLATES;
+  return USE_REAL_API ? [] : SAMPLE_TEMPLATES;
 }
 
 export async function analyzeSampleImage(sampleId, settings = {}, { onStageChange } = {}) {

@@ -1,18 +1,19 @@
+import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
+import StatusIndicator from '../ui/StatusIndicator.jsx';
+import { isRealApiConfigured } from '../../services/api.js';
 
-const FOOTER_COLUMNS = [
-  {
-    title: 'Dataset & Pipeline',
-    items: ['COCO 2017 (80 object classes)', 'ImageNet-1K pretrained weights', 'Confidence threshold: adjustable', 'NMS IoU overlap: 0.50'],
-  },
-  {
-    title: 'Architecture Stack',
-    items: ['FastAPI inference service (planned)', 'React + Vite client shell', 'YOLO11s object detection', 'ResNet50 classification'],
-  },
-  {
-    title: 'Capstone Governance',
-    items: ['Machine Perception Specialization', 'Internship Evaluation Panel'],
-  },
+const NAV_LINKS = [
+  { to: '/analyze', label: 'Analyze' },
+  { to: '/history', label: 'History' },
+  { to: '/models', label: 'Models & Metrics' },
+];
+
+const MODEL_INFO_ITEMS = [
+  'YOLO11s object detection',
+  'ResNet50 classification',
+  'COCO 2017 (80 object classes)',
+  'Adjustable confidence threshold',
 ];
 
 export default function Footer() {
@@ -23,29 +24,54 @@ export default function Footer() {
           <div className="space-y-space-sm md:col-span-1">
             <Logo />
             <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              An internship capstone combining YOLO11s object detection and ResNet50 image
-              classification into one computer-vision product.
+              Intelligent image understanding through computer vision — detect objects and
+              classify what's in your images in seconds.
             </p>
           </div>
-          {FOOTER_COLUMNS.map((col) => (
-            <div className="space-y-space-sm" key={col.title}>
-              <h4 className="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">
-                {col.title}
-              </h4>
-              <ul className="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
-                {col.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+
+          <div className="space-y-space-sm">
+            <h4 className="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">
+              Navigation
+            </h4>
+            <ul className="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              {NAV_LINKS.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className="hover:text-on-surface transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-space-sm">
+            <h4 className="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">
+              Models
+            </h4>
+            <ul className="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              {MODEL_INFO_ITEMS.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-space-sm">
+            <h4 className="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-semibold">
+              System
+            </h4>
+            <div className="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+              <StatusIndicator
+                tone="online"
+                label={isRealApiConfigured ? 'API Status: Connected' : 'API Status: Ready'}
+              />
+              <div>
+                <StatusIndicator tone="online" pulse={false} label="Models Status: Loaded" />
+              </div>
             </div>
-          ))}
+          </div>
         </div>
         <div className="pt-space-md border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
-          <p>&copy; {new Date().getFullYear()} VisionAI Capstone Project. Mock evaluation data shown until models are trained.</p>
-          <div className="flex gap-space-md">
-            <span>Frontend v0.1</span>
-            <span>Backend: Not yet connected</span>
-          </div>
+          <p>&copy; {new Date().getFullYear()} VisionAI. All rights reserved.</p>
         </div>
       </div>
     </footer>

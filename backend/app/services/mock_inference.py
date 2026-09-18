@@ -121,6 +121,10 @@ class MockInferenceAdapter(ModelAdapter):
         self._loaded = False
         self._current_hint: str | None = None
 
+    @property
+    def device_description(self) -> str:
+        return "CPU (mock — no model weights loaded)"
+
     def load(self) -> None:
         self._loaded = True
 

@@ -17,7 +17,6 @@ const DETECTION_METRIC_LABELS = [
   { key: 'map5095', label: 'mAP50-95' },
   { key: 'precision', label: 'Precision' },
   { key: 'recall', label: 'Recall' },
-  { key: 'mIoU', label: 'mIoU' },
 ];
 
 const CLASSIFICATION_METRIC_LABELS = [
@@ -77,16 +76,16 @@ export default function ModelsMetricsPage() {
     <PageContainer className="py-space-xl flex flex-col gap-space-xl">
       <div>
         <span className="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-low px-space-sm py-1 rounded inline-block mb-space-xs">
-          Evaluation snapshot &middot; mock data until models are trained
+          {modelInfo?.detection?.mode === 'real' ? 'Live evaluation results' : 'Evaluation preview · local mock data'}
         </span>
         <h1 className="font-headline-xl text-headline-xl text-primary tracking-tight">Models &amp; Evaluation</h1>
         <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-1">
           Architecture, benchmark metrics, and training evaluation for the dual-stream computer-vision
-          pipeline. See project-brain/03_ML_BACKEND.md for the real evaluation plan.
+          pipeline powering VisionAI.
         </p>
       </div>
 
-      <PipelineStatusBanner />
+      <PipelineStatusBanner modelInfo={modelInfo} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
         <ModelCard
@@ -96,8 +95,8 @@ export default function ModelsMetricsPage() {
           icon={Crop}
           badgeVariant="secondary"
           badgeLabel="Detection Stream"
-          progressLabel="Mean IoU Score"
-          progressValue={detection.mIoU}
+          progressLabel="Recall"
+          progressValue={detection.recall}
         />
         <ModelCard
           info={modelInfo.classification}
@@ -115,9 +114,13 @@ export default function ModelsMetricsPage() {
         <Card className="space-y-space-md">
           <div>
             <span className="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">
-              YOLO11s Detection
+              YOLO11s Detection &middot; Fine-Tuning Experiment
             </span>
             <h3 className="font-headline-sm text-headline-sm text-primary mt-1">Loss Descent &amp; mAP@50 Ascent</h3>
+            <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              A fine-tuning run tried on a 12k-image subset — not the production detector, which uses the
+              pretrained baseline above (it scored higher and was never trained by this project).
+            </p>
           </div>
           <TrainingChart
             data={detectionTrainingCurve}

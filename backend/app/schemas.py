@@ -185,6 +185,17 @@ class DetectionMetricsSchema(BaseModel):
     map50_95: float
 
 
+class DetectionExperimentSchema(BaseModel):
+    """The fine-tuned YOLO11s run — a labeled comparison artifact only.
+    Never the production detector's metrics (see DetectionMetricsSchema)."""
+
+    description: str
+    precision: float
+    recall: float
+    map50: float
+    map50_95: float
+
+
 class ClassificationMetricsSchema(BaseModel):
     top1_accuracy: float
     top5_accuracy: float
@@ -247,6 +258,7 @@ class MetricsResponse(BaseModel):
     per_class_metrics: list[PerClassMetricSchema]
     dataset: DatasetInfoSchema
     device: DeviceInfoSchema
+    detection_experiment: DetectionExperimentSchema | None = None
 
 
 class ErrorResponse(BaseModel):

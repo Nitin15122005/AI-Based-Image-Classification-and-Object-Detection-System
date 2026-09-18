@@ -1,13 +1,20 @@
 import { Rocket } from 'lucide-react';
 
-const STATUS_ITEMS = [
-  { label: 'Backend Service', value: 'FastAPI (not yet connected)' },
-  { label: 'Detection Node', value: 'YOLO11s (80 classes) — mock' },
-  { label: 'Classification Node', value: 'ResNet50 — mock' },
-  { label: 'Acceleration Platform', value: 'CPU (mock) · GPU-ready' },
-];
+export default function PipelineStatusBanner({ modelInfo }) {
+  const isReal = modelInfo?.detection?.mode === 'real';
+  const statusItems = [
+    {
+      label: 'Backend Service',
+      value: isReal ? 'FastAPI — connected' : 'Mock inference (no live backend required)',
+    },
+    {
+      label: 'Detection Node',
+      value: `YOLO11s (${modelInfo?.detection?.taxonomy || '80 COCO classes'}) — ${isReal ? 'active' : 'mock'}`,
+    },
+    { label: 'Classification Node', value: `ResNet50 — ${isReal ? 'active' : 'mock'}` },
+    { label: 'Acceleration Platform', value: modelInfo?.system?.servingDevice || 'Unknown' },
+  ];
 
-export default function PipelineStatusBanner() {
   return (
     <div className="rounded-xl bg-primary-container text-on-primary p-space-lg shadow-md relative overflow-hidden">
       <div className="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-secondary/15 blur-3xl pointer-events-none" />
@@ -22,7 +29,7 @@ export default function PipelineStatusBanner() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
-          {STATUS_ITEMS.map((item) => (
+          {statusItems.map((item) => (
             <div key={item.label} className="bg-primary/40 rounded-lg p-space-sm backdrop-blur-sm space-y-1">
               <span className="font-label-sm text-label-sm text-on-primary-container block">{item.label}</span>
               <div className="font-label-md text-label-md text-on-primary flex items-center gap-1.5 font-medium">

@@ -18,7 +18,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-surface-container-high shadow-sm mb-6 animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-secondary" />
             <span className="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold">
-              Internship Capstone Project · Computer Vision
+              AI Computer Vision
             </span>
           </div>
 

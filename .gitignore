@@ -31,6 +31,13 @@ ml/datasets/
 # Env / secrets
 .env
 .env.*
+!.env.example
+!**/.env.example
+
+# Backend runtime storage (uploaded originals + generated annotated images)
+backend/storage/
+storage/uploads/
+storage/results/
 
 # OS / editor
 .DS_Store
